@@ -32,7 +32,7 @@ export default function Projects() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 batman-text-glow">
-            Case Files
+            Projects
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-yellow-600 mx-auto mb-8"></div>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">

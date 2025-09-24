@@ -70,11 +70,11 @@ export default function Contact() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl md:text-5xl font-bold mb-6 batman-text-glow">
-                        Open Comms
+                        Lets Connect
                     </h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-yellow-600 mx-auto mb-8"></div>
                     <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-                        Need an operative for a mission? Drop your coordinates here.
+                        Open to collaborations, opportunities, or just a good tech chat.
                     </p>
                 </motion.div>
 
@@ -87,7 +87,7 @@ export default function Contact() {
                         className="space-y-8"
                     >
                         <div>
-                            <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">Intel Drop</h3>
+                            <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">Get in Touch</h3>
                             <div className="space-y-6">
                                 {contactInfo.map((info, index) => (
                                     <motion.div
@@ -145,13 +145,13 @@ export default function Contact() {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="bg-gray-800/50 p-8 rounded-md border border-gray-700 cut-corner"
                     >
-                        <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">Secure Message</h3>
+                        <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">Send Message</h3>
                         
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
                                 <Input
                                     type="text"
-                                    placeholder="Your Callsign"
+                                    placeholder="Your Name"
                                     value={formData.name}
                                     onChange={(e) => handleInputChange('name', e.target.value)}
                                     required
@@ -162,7 +162,7 @@ export default function Contact() {
                             <div>
                                 <Input
                                     type="email"
-                                    placeholder="Your Frequency (Email)"
+                                    placeholder="Your Email"
                                     value={formData.email}
                                     onChange={(e) => handleInputChange('email', e.target.value)}
                                     required
