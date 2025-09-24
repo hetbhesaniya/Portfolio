@@ -5,8 +5,8 @@ import { User, Award, Coffee } from "lucide-react";
 
 export default function About() {
     const stats = [
-        { icon: User, label: "Years Experience", value: "5+" },
-        { icon: Award, label: "Projects Completed", value: "50+" },
+        { icon: User, label: "Years Experience", value: "2+" },
+        { icon: Award, label: "Projects Completed", value: "3+" },
         { icon: Coffee, label: "Cups of Coffee", value: "1000+" }
     ];
 
@@ -33,15 +33,14 @@ export default function About() {
                     >
                         <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
                             <p>
-                                I'm a full-stack developer operating at the intersection of strategic design and robust engineering. 
-                                My focus is on architecting clean, efficient code and deploying systems that perform under pressure.
+                                I’m a Software Engineer and Data Engineer with a passion for building systems that are as reliable as they are intelligent.  
+                                My focus lies at the intersection of backend engineering, cloud infrastructure, and data-driven problem solving.  
                             </p>
                             <p>
-                                With years of experience in the field, my mission is to deliver digital solutions that are both powerful and intuitive.
-                                I thrive in complex problem-solving environments and am committed to mastering the modern web technology stack.
+                                Over the past few years, I’ve developed multilingual APIs, optimized system performance, automated workflows, and deployed applications on AWS and Dockerized environments. At the same time, I’ve built data pipelines, dashboards, and applied ML models that turn raw data into actionable insights.  
                             </p>
                             <p>
-                                Away from the keyboard, I'm constantly analyzing new tech, deconstructing complex systems, and planning my next mission.
+                                What drives me is the challenge of creating solutions that perform under pressure whether that’s an API serving thousands of users or a data pipeline ensuring accuracy at scale. Outside of work, I’m constantly exploring new technologies, experimenting with AI tools, and sharpening my skills to stay ahead of the curve.
                             </p>
                         </div>
 
@@ -52,7 +51,7 @@ export default function About() {
                             className="mt-8"
                         >
                             <button className="bg-transparent border-2 border-yellow-500 text-yellow-500 px-8 py-3 rounded-md font-semibold hover:bg-yellow-500 hover:text-black transition-all duration-300">
-                                Download Intel
+                                Resume
                             </button>
                         </motion.div>
                     </motion.div>
