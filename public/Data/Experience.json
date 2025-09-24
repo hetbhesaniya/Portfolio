@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "company": "GlassiaAI",
+    "role": "Software Developer (Remote)",
+    "duration": "Jun 2024 – Present",
+    "description": [
+      "Engineered multilingual RESTful APIs supporting 10+ languages, reducing latency by 30%.",
+      "Developed scalable backend services with Node.js, Flask, and Spring Boot.",
+      "Deployed containerized applications with Docker on AWS EC2.",
+      "Set up CI/CD pipelines using GitHub Actions for faster and reliable releases."
+    ]
+  },
+  {
+    "id": 2,
+    "company": "Arizona State University — Enterprise Brand Strategy & Management",
+    "role": "Data & Editorial Operations Analyst",
+    "duration": "Jan 2025 – Present",
+    "description": [
+      "Automated editorial workflows, improving turnaround time by 40%.",
+      "Designed Python validation scripts, reducing publication errors by 90%.",
+      "Built KPI dashboards and integrated workflow tools for leadership reporting.",
+      "Streamlined data pipelines and monitoring to support 500+ active publications."
+    ]
+  },
+  {
+    "id": 3,
+    "company": "NR Crew Pvt. Ltd.",
+    "role": "Software Developer Intern",
+    "duration": "Jan 2024 - Jun 2024",
+    "description": [
+      "Built e-commerce platform backend with REST APIs and MySQL.",
+      "Optimized frontend performance, reducing page load time by 35%.",
+      "Collaborated with cross-functional teams to deliver features in sprints."
+    ]
+  },
+  {
+    "id": 4,
+    "company": "Techmicra IT Solutions",
+    "role": "Data Science Intern",
+    "duration": "Jul 2023 - Aug 2023",
+    "description": [
+      "Designed and deployed regression models for client reporting.",
+      "Built analytics dashboards and interactive visualizations in Python.",
+      "Automated ETL workflows to clean and prepare large datasets."
+    ]
+  }
+]

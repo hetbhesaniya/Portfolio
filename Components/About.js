@@ -50,9 +50,15 @@ export default function About() {
                             transition={{ duration: 0.8, delay: 0.6 }}
                             className="mt-8"
                         >
-                            <button className="bg-transparent border-2 border-yellow-500 text-yellow-500 px-8 py-3 rounded-md font-semibold hover:bg-yellow-500 hover:text-black transition-all duration-300">
-                                Resume
-                            </button>
+                            <a 
+    href="/resume.pdf" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="inline-block bg-transparent border-2 border-yellow-500 text-yellow-500 px-8 py-3 rounded-md font-semibold hover:bg-yellow-500 hover:text-black transition-all duration-300"
+>
+    Resume
+</a>
+
                         </motion.div>
                     </motion.div>
 

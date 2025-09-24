@@ -37,27 +37,27 @@ export default function Contact() {
         {
             icon: Mail,
             label: "Email",
-            value: "your.email@example.com",
-            link: "mailto:your.email@example.com"
+            value: "hbhesani@asu.edu",
+            link: "mailto:your.hbhesani@asu.edu"
         },
         {
             icon: Phone,
             label: "Phone",
-            value: "+1 (555) 123-4567",
-            link: "tel:+15551234567"
+            value: "+1 (623) 296-3036",
+            link: "tel:+16232963036"
         },
         {
             icon: MapPin,
             label: "Location",
-            value: "Your City, Country",
+            value: "Tempe, AZ • USA",
             link: null
         }
     ];
 
     const socialLinks = [
-        { icon: Github, link: "https://github.com", label: "GitHub" },
-        { icon: Linkedin, link: "https://linkedin.com", label: "LinkedIn" },
-        { icon: Twitter, link: "https://twitter.com", label: "Twitter" }
+        { icon: Github, link: "https://github.com/hetbhesaniya", label: "GitHub" },
+        { icon: Linkedin, link: "https://www.linkedin.com/in/het-bhesaniya/", label: "LinkedIn" },
+    
     ];
 
     return (

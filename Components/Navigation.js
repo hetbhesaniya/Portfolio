@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -17,6 +18,7 @@ export default function Navigation() {
     const navItems = [
         { name: "Home", href: "#home" },
         { name: "About", href: "#about" },
+        { name: "Experience", href: "#experience" },
         { name: "Skills", href: "#skills" },
         { name: "Projects", href: "#projects" },
         { name: "Contact", href: "#contact" }
@@ -47,7 +49,7 @@ export default function Navigation() {
                         className="text-2xl font-bold batman-text-glow cursor-pointer"
                         onClick={() => scrollToSection("#home")}
                     >
-                        Portfolio
+                        Het Bhesaniya
                     </motion.div>
 
                     {/* Desktop Navigation */}

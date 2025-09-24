@@ -18,7 +18,7 @@ export default function Footer() {
                         whileTap={{ scale: 0.95 }}
                         className="mb-8 text-2xl font-bold batman-text-glow cursor-pointer hover:text-yellow-500 transition-colors duration-300"
                     >
-                        Your Name
+                        Het Bhesaniya
                     </motion.button>
                     
                     <div className="flex items-center justify-center space-x-2 text-gray-400 mb-4">
@@ -33,12 +33,12 @@ export default function Footer() {
                     </div>
                     
                     <p className="text-gray-400 text-sm">
-                        © {new Date().getFullYear()} Your Name. All rights reserved.
+                        © {new Date().getFullYear()} Het Bhesaniya. All rights reserved.
                     </p>
                     
                     <div className="mt-8 pt-8 border-t border-gray-800">
                         <p className="text-gray-500 text-xs font-mono">
-                            "The city's crying out for a hero. I'll give it one."
+                            "Building reliable systems with speed and clarity."
                         </p>
                     </div>
                 </div>

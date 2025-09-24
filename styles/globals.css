@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #__next { height: 100%; }
+html, body, #__next {
+  height: 100%;
+}
 
 :root {
   --batman-black: #050505;
@@ -19,6 +21,7 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--batman-black);
   color: var(--batman-text);
+  cursor: crosshair;
 }
 
 .batman-glow {
@@ -42,7 +45,10 @@ body {
 .noise-bg::before {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
@@ -53,4 +59,53 @@ body {
 
 .cut-corner {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+}
+
+/* Text Glitch Effect */
+.glitch-text-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.glitch-text {
+  position: relative;
+  transition: 0.2s ease-in-out;
+}
+
+.glitch-text-container:hover .glitch-text {
+  color: var(--batman-gold);
+}
+
+.glitch-text-container:hover .glitch-text::before,
+.glitch-text-container:hover .glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--batman-black);
+  overflow: hidden;
+}
+
+.glitch-text-container:hover .glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--batman-gold-muted);
+  animation: glitch-anim-1 1s infinite linear alternate-reverse;
+}
+
+.glitch-text-container:hover .glitch-text::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--batman-gold), 2px 2px var(--batman-gold-muted);
+  animation: glitch-anim-2 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%); }
+  100% { clip-path: polygon(0 75%, 100% 75%, 100% 80%, 0 80%); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: polygon(0 40%, 100% 40%, 100% 45%, 0 45%); }
+  100% { clip-path: polygon(0 15%, 100% 15%, 100% 20%, 0 20%); }
 }
