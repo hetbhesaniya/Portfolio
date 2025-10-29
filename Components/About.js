@@ -11,7 +11,7 @@ export default function About() {
     ];
 
     return (
-        <section id="about" className="py-20 bg-black">
+        <section id="about" className="py-20 bg-white">
             <div className="container mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -19,10 +19,10 @@ export default function About() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 batman-text-glow">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--asu-maroon)' }}>
                         About Me
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-yellow-600 mx-auto mb-8"></div>
+                    <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--asu-gold)' }}></div>
                 </motion.div>
 
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -31,7 +31,7 @@ export default function About() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
-                        <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
+                        <div className="space-y-6 text-lg leading-relaxed" style={{ color: '#444' }}>
                             <p>
                                 I’m a Software Engineer and Data Engineer with a passion for building systems that are as reliable as they are intelligent.  
                                 My focus lies at the intersection of backend engineering, cloud infrastructure, and data-driven problem solving.  
@@ -51,13 +51,13 @@ export default function About() {
                             className="mt-8"
                         >
                             <a 
-    href="/resume.pdf" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="inline-block bg-transparent border-2 border-yellow-500 text-yellow-500 px-8 py-3 rounded-md font-semibold hover:bg-yellow-500 hover:text-black transition-all duration-300"
->
-    Resume
-</a>
+                                href="/resume.pdf" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-block px-8 py-3 rounded-md font-semibold transition-all duration-300 asu-btn-primary asu-gold-glow"
+                            >
+                                Resume
+                            </a>
 
                         </motion.div>
                     </motion.div>
@@ -75,15 +75,16 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.2 * index }}
                                 whileHover={{ scale: 1.05 }}
-                                className="bg-gray-800/50 p-6 rounded-md border border-gray-700 hover:border-yellow-500/30 transition-all duration-300 batman-glow"
+                                className="p-6 rounded-md border transition-all duration-300"
+                                style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.08)' }}
                             >
                                 <div className="flex items-center space-x-4">
-                                    <div className="p-3 bg-yellow-500/10 rounded-md">
-                                        <stat.icon className="w-6 h-6 text-yellow-500" />
+                                    <div className="p-3 rounded-md" style={{ background: 'rgba(255,198,39,0.12)' }}>
+                                        <stat.icon className="w-6 h-6" style={{ color: 'var(--asu-maroon)' }} />
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold text-white">{stat.value}</h3>
-                                        <p className="text-gray-400">{stat.label}</p>
+                                        <h3 className="text-2xl font-bold" style={{ color: '#111111' }}>{stat.value}</h3>
+                                        <p style={{ color: '#555' }}>{stat.label}</p>
                                     </div>
                                 </div>
                             </motion.div>

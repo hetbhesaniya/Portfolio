@@ -38,21 +38,20 @@ export default function Hero() {
     };
 
     return (
-        <section ref={heroRef} id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <section ref={heroRef} id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden asu-white-maroon-bg">
             {/* Interactive Spotlight Effect */}
             <div 
                 className="spotlight absolute top-0 left-0 w-96 h-96 rounded-full pointer-events-none z-20"
                 style={{
-                    background: 'radial-gradient(circle, rgba(192, 159, 0, 0.05) 0%, rgba(192, 159, 0, 0) 60%)'
+                    background: 'radial-gradient(circle, rgba(255, 198, 39, 0.08) 0%, rgba(255, 198, 39, 0) 60%)'
                 }}
             ></div>
 
             {/* Parallax Background */}
             <div className="absolute inset-0">
                 <div className="parallax-bg absolute -inset-10 transition-transform duration-300 ease-out">
-                    <div className="absolute inset-0 bg-repeat bg-center [background-image:radial-gradient(theme(colors.yellow.500/0.05)_1px,transparent_1px)] [background-size:2rem_2rem]"></div>
+                    <div className="absolute inset-0 bg-repeat bg-center [background-image:radial-gradient(rgba(140,29,64,0.06)_1px,transparent_1px)] [background-size:2rem_2rem]"></div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10"></div>
             </div>
 
             <div className="container mx-auto px-6 text-center relative z-10">
@@ -62,12 +61,12 @@ export default function Hero() {
                     transition={{ duration: 1, delay: 0.2 }}
                 >
                     <motion.div
-                        className="glitch-text-container mb-6"
+                        className="mb-6"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, delay: 0.5 }}
                     >
-                        <h1 data-text="Het Bhesaniya" className="glitch-text text-5xl md:text-7xl font-bold batman-text-glow">
+                        <h1 className="text-5xl md:text-7xl font-bold asu-brand">
                             Het Bhesaniya
                         </h1>
                     </motion.div>
@@ -78,10 +77,10 @@ export default function Hero() {
                         transition={{ duration: 1, delay: 0.8 }}
                         className="mb-8"
                     >
-                        <h2 className="text-2xl md:text-3xl text-yellow-500 font-light mb-4 tracking-widest uppercase">
+                        <h2 className="text-2xl md:text-3xl font-light mb-4 tracking-widest uppercase" style={{ color: 'var(--asu-maroon)' }}>
                             Software Engineer & Data Analyst
                         </h2>
-                        <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: '#444' }}>
                           
                             Building reliable systems, scalable pipelines, and intelligent solutions
                         </p>
@@ -127,15 +126,33 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 1.4 }}
-                        whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(131, 192, 0, 0.3)" }}
+                        whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(255, 198, 39, 0.35)" }}
                         whileTap={{ scale: 0.95 }}
                         onClick={scrollToNext}
-                        className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-8 py-3 rounded-md font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300"
+                        className="px-8 py-3 rounded-md font-semibold transition-all duration-300 asu-btn-primary asu-gold-glow"
                     >
                         Explore My Skills
                     
                     </motion.button>
                 </motion.div>
+
+                {/* Subtle ASU gold particles */}
+                <div className="pointer-events-none absolute inset-0 -z-0">
+                    {[...Array(8)].map((_, i) => (
+                        <motion.span
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.6 }}
+                            animate={{ opacity: [0.15, 0.4, 0.15], y: [0, -8, 0] }}
+                            transition={{ duration: 4 + i * 0.2, repeat: Infinity, delay: i * 0.3 }}
+                            className="absolute block w-1.5 h-1.5 rounded-full"
+                            style={{
+                                backgroundColor: 'var(--asu-gold)',
+                                left: `${(i * 13) % 100}%`,
+                                top: `${(i * 17) % 100}%`
+                            }}
+                        />
+                    ))}
+                </div>
 
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -147,7 +164,8 @@ export default function Hero() {
                         animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
                         onClick={scrollToNext}
-                        className="text-yellow-500 hover:text-yellow-400 transition-colors duration-300"
+                        className="transition-colors duration-300"
+                        style={{ color: 'var(--asu-gold)' }}
                     >
                         <ChevronDown size={32} />
                     </motion.button>

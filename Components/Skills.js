@@ -19,7 +19,7 @@ export default function SkillsAlt() {
     ];
 
     return (
-        <section id="skills" className="py-20 bg-black">
+        <section id="skills" className="py-20 bg-white">
             <div className="container mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -27,11 +27,11 @@ export default function SkillsAlt() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 batman-text-glow">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--asu-maroon)' }}>
                         Technical Skills
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-yellow-600 mx-auto mb-8"></div>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                    <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--asu-gold)' }}></div>
+                    <p className="text-xl max-w-3xl mx-auto" style={{ color: '#444' }}>
                         The technologies and tools I wield to execute my missions.
                     </p>
                 </motion.div>
@@ -44,7 +44,7 @@ export default function SkillsAlt() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
                         >
-                            <h3 className="text-2xl font-bold text-yellow-500 mb-8 text-center tracking-widest uppercase">
+                            <h3 className="text-2xl font-bold mb-8 text-center tracking-widest uppercase" style={{ color: 'var(--asu-maroon)' }}>
                                 {category.title}
                             </h3>
                             
@@ -54,12 +54,13 @@ export default function SkillsAlt() {
                                         key={skill}
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
-                                        whileHover={{ y: -5, scale: 1.05, boxShadow: "0 0 15px rgba(192, 159, 0, 0.2)" }}
+                                        whileHover={{ y: -5, scale: 1.05, boxShadow: "0 0 18px rgba(255, 198, 39, 0.25)" }}
                                         transition={{ duration: 0.3, delay: (categoryIndex * 0.2) + (skillIndex * 0.05) }}
-                                        className="bg-gray-800/50 p-4 rounded-md border border-gray-700 flex items-center gap-3 cursor-default"
+                                        className="p-4 rounded-md border flex items-center gap-3 cursor-default"
+                                        style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.08)' }}
                                     >
-                                        <CheckCircle className="w-5 h-5 text-yellow-500"/>
-                                        <span className="text-gray-200 font-medium text-lg">{skill}</span>
+                                        <CheckCircle className="w-5 h-5" style={{ color: 'var(--asu-maroon)' }}/>
+                                        <span className="font-medium text-lg" style={{ color: '#111111' }}>{skill}</span>
                                     </motion.div>
                                 ))}
                             </div>

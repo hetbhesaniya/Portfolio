@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/Components/ui/button";
+import { Input } from "@/Components/ui/input";
+import { Textarea } from "@/Components/ui/textarea";
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -61,7 +61,7 @@ export default function Contact() {
     ];
 
     return (
-        <section id="contact" className="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <section id="contact" className="py-20 bg-white">
             <div className="container mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -69,11 +69,11 @@ export default function Contact() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 batman-text-glow">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--asu-maroon)' }}>
                         Lets Connect
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-yellow-600 mx-auto mb-8"></div>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                    <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--asu-gold)' }}></div>
+                    <p className="text-xl max-w-3xl mx-auto" style={{ color: '#444' }}>
                         Open to collaborations, opportunities, or just a good tech chat.
                     </p>
                 </motion.div>
@@ -87,7 +87,7 @@ export default function Contact() {
                         className="space-y-8"
                     >
                         <div>
-                            <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">Get in Touch</h3>
+                            <h3 className="text-2xl font-bold mb-6 uppercase tracking-widest" style={{ color: 'var(--asu-maroon)' }}>Get in Touch</h3>
                             <div className="space-y-6">
                                 {contactInfo.map((info, index) => (
                                     <motion.div
@@ -97,20 +97,21 @@ export default function Contact() {
                                         transition={{ duration: 0.6, delay: 0.1 * index }}
                                         className="flex items-center space-x-4"
                                     >
-                                        <div className="p-3 bg-yellow-500/10 rounded-md">
-                                            <info.icon className="w-5 h-5 text-yellow-500" />
+                                        <div className="p-3 rounded-md" style={{ background: 'rgba(255,198,39,0.12)' }}>
+                                            <info.icon className="w-5 h-5" style={{ color: 'var(--asu-maroon)' }} />
                                         </div>
                                         <div>
-                                            <p className="text-gray-400 text-sm">{info.label}</p>
+                                            <p className="text-sm" style={{ color: '#666' }}>{info.label}</p>
                                             {info.link ? (
                                                 <a
                                                     href={info.link}
-                                                    className="text-white hover:text-yellow-500 transition-colors duration-300"
+                                                    className="transition-colors duration-300"
+                                                    style={{ color: '#111111' }}
                                                 >
                                                     {info.value}
                                                 </a>
                                             ) : (
-                                                <p className="text-white">{info.value}</p>
+                                                <p style={{ color: '#111111' }}>{info.value}</p>
                                             )}
                                         </div>
                                     </motion.div>
@@ -119,7 +120,7 @@ export default function Contact() {
                         </div>
 
                         <div>
-                            <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">Social Network</h3>
+                            <h3 className="text-2xl font-bold mb-6 uppercase tracking-widest" style={{ color: 'var(--asu-maroon)' }}>Social Network</h3>
                             <div className="flex space-x-4">
                                 {socialLinks.map((social) => (
                                     <motion.a
@@ -129,7 +130,8 @@ export default function Contact() {
                                         rel="noopener noreferrer"
                                         whileHover={{ scale: 1.1, y: -5 }}
                                         whileTap={{ scale: 0.9 }}
-                                        className="p-3 bg-gray-800 rounded-md text-gray-400 hover:text-yellow-500 hover:bg-gray-700 transition-all duration-300"
+                                        className="p-3 rounded-md transition-all duration-300"
+                                        style={{ background: '#f3f4f6', color: '#444' }}
                                     >
                                         <social.icon size={24} />
                                     </motion.a>
@@ -143,9 +145,10 @@ export default function Contact() {
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="bg-gray-800/50 p-8 rounded-md border border-gray-700 cut-corner"
+                        className="p-8 rounded-md border"
+                        style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.08)' }}
                     >
-                        <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">Send Message</h3>
+                        <h3 className="text-2xl font-bold mb-6 uppercase tracking-widest" style={{ color: 'var(--asu-maroon)' }}>Send Message</h3>
                         
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
@@ -155,7 +158,8 @@ export default function Contact() {
                                     value={formData.name}
                                     onChange={(e) => handleInputChange('name', e.target.value)}
                                     required
-                                    className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-yellow-500 rounded-sm"
+                                    className="rounded-sm"
+                                    style={{ background: '#f9fafb', borderColor: '#e5e7eb', color: '#111111' }}
                                 />
                             </div>
                             
@@ -166,7 +170,8 @@ export default function Contact() {
                                     value={formData.email}
                                     onChange={(e) => handleInputChange('email', e.target.value)}
                                     required
-                                    className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-yellow-500 rounded-sm"
+                                    className="rounded-sm"
+                                    style={{ background: '#f9fafb', borderColor: '#e5e7eb', color: '#111111' }}
                                 />
                             </div>
                             
@@ -177,14 +182,15 @@ export default function Contact() {
                                     onChange={(e) => handleInputChange('message', e.target.value)}
                                     required
                                     rows={6}
-                                    className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-yellow-500 resize-none rounded-sm"
+                                    className="resize-none rounded-sm"
+                                    style={{ background: '#f9fafb', borderColor: '#e5e7eb', color: '#111111' }}
                                 />
                             </div>
                             
                             <Button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-semibold py-3 hover:from-yellow-400 hover:to-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 rounded-sm"
+                                className="w-full font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 rounded-sm asu-btn-primary asu-gold-glow"
                             >
                                 {isSubmitting ? (
                                     <div className="flex items-center justify-center space-x-2">

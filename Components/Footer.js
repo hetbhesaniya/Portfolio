@@ -1,7 +1,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Heart } from "lucide-react"; // This import is no longer used but will be kept for consistency if it was part of the original, then removed if not. The outline replaces the Heart icon with a custom SVG. I will remove the unused import.
 
 export default function Footer() {
     const scrollToTop = () => {
@@ -9,28 +8,29 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-black border-t border-gray-800 py-12">
+        <footer className="py-12" style={{ background: '#ffffff', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
             <div className="container mx-auto px-6">
                 <div className="text-center">
                     <motion.button
                         onClick={scrollToTop}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="mb-8 text-2xl font-bold batman-text-glow cursor-pointer hover:text-yellow-500 transition-colors duration-300"
+                        className="mb-8 text-2xl font-bold cursor-pointer transition-colors duration-300 asu-text-glow"
+                        style={{ color: 'var(--asu-maroon)' }}
                     >
                         Het Bhesaniya
                     </motion.button>
                     
-                    <div className="flex items-center justify-center space-x-2 text-gray-400 mb-4">
+                    <div className="flex items-center justify-center space-x-2 mb-4" style={{ color: '#555' }}>
                         <span>Forged with code, refined by data</span>
                     </div>
                     
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-sm" style={{ color: '#666' }}>
                         © {new Date().getFullYear()} Het Bhesaniya. All rights reserved.
                     </p>
                     
-                    <div className="mt-8 pt-8 border-t border-gray-800">
-                        <p className="text-gray-500 text-xs font-mono">
+                    <div className="mt-8 pt-8" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                        <p className="text-xs font-mono" style={{ color: '#777' }}>
                             "Building reliable systems with speed and clarity."
                         </p>
                     </div>

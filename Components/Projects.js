@@ -6,7 +6,7 @@ export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch("/data/projects.json")
+    fetch("/Data/projects.json")
       .then(res => res.json())
       .then(data => setProjects(data))
       .catch(err => console.error("Error loading projects:", err));
@@ -14,16 +14,16 @@ export default function Projects() {
 
   if (!projects.length) {
     return (
-      <section id="projects" className="py-20 bg-black">
+      <section id="projects" className="py-20 bg-white">
         <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-400">Loading projects...</p>
+          <p style={{ color: '#666' }}>Loading projects...</p>
         </div>
       </section>
     );
   }
 
   return (
-    <section id="projects" className="py-20 bg-black">
+    <section id="projects" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -31,11 +31,11 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 batman-text-glow">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--asu-maroon)' }}>
             Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-yellow-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--asu-gold)' }}></div>
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: '#444' }}>
             A collection of completed missions and tactical deployments.
           </p>
         </motion.div>
@@ -48,7 +48,8 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              className="bg-gray-800/50 rounded-md overflow-hidden border border-gray-700 hover:border-yellow-500/30 transition-all duration-300 group cut-corner"
+            className="rounded-md overflow-hidden border transition-all duration-300 group"
+            style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.08)' }}
             >
               {project.image_url && (
                 <div className="relative overflow-hidden">
@@ -57,7 +58,7 @@ export default function Projects() {
                     alt={project.title}
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[rgba(0,0,0,0.6)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="flex space-x-4">
                       {project.demo_url && (
                         <motion.a
@@ -65,7 +66,7 @@ export default function Projects() {
                           href={project.demo_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-3 bg-yellow-500 rounded-md text-black hover:bg-yellow-400 transition-colors duration-300"
+                          className="p-3 rounded-md text-black transition-colors duration-300 asu-btn-primary"
                         >
                           <ExternalLink size={20} />
                         </motion.a>
@@ -76,7 +77,8 @@ export default function Projects() {
                           href={project.github_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-3 bg-gray-700 rounded-md text-white hover:bg-gray-600 transition-colors duration-300"
+                          className="p-3 rounded-md text-white transition-colors duration-300"
+                          style={{ background: '#1f2937' }}
                         >
                           <Github size={20} />
                         </motion.a>
@@ -87,10 +89,10 @@ export default function Projects() {
               )}
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-yellow-500 transition-colors duration-300">
+                <h3 className="text-xl font-bold mb-3 transition-colors duration-300" style={{ color: '#111111' }}>
                   {project.title}
                 </h3>
-                <p className="text-gray-400 mb-4 leading-relaxed">
+                <p className="mb-4 leading-relaxed" style={{ color: '#555' }}>
                   {project.description}
                 </p>
 
@@ -99,7 +101,8 @@ export default function Projects() {
                     {project.technologies.map((tech, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 bg-yellow-500/10 text-yellow-500 text-sm rounded-md border border-yellow-500/20 font-mono"
+                        className="px-3 py-1 text-sm rounded-md font-mono"
+                        style={{ background: 'rgba(255,198,39,0.12)', color: 'var(--asu-maroon)', border: '1px solid rgba(255,198,39,0.25)' }}
                       >
                         {tech}
                       </span>
@@ -107,13 +110,14 @@ export default function Projects() {
                   </div>
                 )}
 
-                <div className="flex space-x-4 pt-2 border-t border-gray-700/50">
+                <div className="flex space-x-4 pt-2" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
                   {project.demo_url && (
                     <a
                       href={project.demo_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-yellow-500 hover:text-yellow-400 transition-colors duration-300"
+                      className="flex items-center space-x-2 transition-colors duration-300"
+                      style={{ color: 'var(--asu-maroon)' }}
                     >
                       <Eye size={16} />
                       <span className="text-sm">View Live</span>
@@ -124,7 +128,8 @@ export default function Projects() {
                       href={project.github_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300"
+                      className="flex items-center space-x-2 transition-colors duration-300"
+                      style={{ color: '#444' }}
                     >
                       <Github size={16} />
                       <span className="text-sm">Source Code</span>
