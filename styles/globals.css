@@ -31,6 +31,100 @@ html, body, #__next {
 
   /* Shadows/accents */
   --asu-glow: 0 0 24px rgba(255, 198, 39, 0.35);
+  --asu-border: rgba(0,0,0,0.08);
+  /* Hero theme tokens (overridden per theme) */
+  --hero-accent: var(--asu-maroon);
+  --hero-hover: var(--asu-maroon);
+  --hero-button-bg: var(--asu-maroon);
+  --hero-button-text: #ffffff;
+  /* Heading accent default */
+  --heading-accent: var(--asu-maroon);
+  /* Generic accent default (used by icons, chips) */
+  --accent-color: var(--asu-maroon);
+  --accent-bg-soft: rgba(140, 29, 64, 0.12);
+  --accent-border-soft: rgba(140, 29, 64, 0.25);
+  /* Underline accent for section dividers */
+  --underline-accent: var(--asu-gold);
+}
+
+/* Theme tokens: ASU Light */
+[data-theme="asu-light"] {
+  --batman-black: #ffffff;            /* page background */
+  --batman-charcoal: #f7f7f7;
+  --batman-gray: #eaeaea;
+  --batman-light-gray: #e5e7eb;
+  --batman-gold: #c09f00;
+  --batman-gold-muted: #a08600;
+  --batman-text: #111111;             /* primary text */
+  --batman-text-muted: #444444;
+
+  /* ASU brand stays, but adjust perceived contrast if needed */
+  --asu-maroon: #8C1D40;
+  --asu-maroon-600: #741936;
+  --asu-maroon-400: #A53053;
+  --asu-gold: #FFC627;
+  --asu-gold-600: #E0AE20;
+  --asu-gold-400: #FFD55E;
+  --asu-sand: #F8F5EA;
+  --asu-ink: #ffffff;
+  --asu-text: #111111;
+  --asu-text-muted: #555555;
+  --asu-border: rgba(0,0,0,0.08);
+  --hero-accent: var(--asu-maroon);
+  --hero-hover: var(--asu-maroon);
+  --hero-button-bg: var(--asu-maroon);
+  --hero-button-text: #ffffff;
+  --heading-accent: var(--asu-maroon);
+  --accent-color: var(--asu-maroon);
+  --accent-bg-soft: rgba(140, 29, 64, 0.12);
+  --accent-border-soft: rgba(140, 29, 64, 0.25);
+  --underline-accent: var(--asu-gold);
+}
+
+/* Theme tokens: ASU Dark */
+[data-theme="asu-dark"] {
+  /* Base surfaces and text per ASU brand dark usage */
+  --batman-black: #000000;           /* Rich Black */
+  --batman-charcoal: #191919;        /* UDS Gray 1 */
+  --batman-gray: #484848;            /* UDS Gray 2 */
+  --batman-light-gray: #747474;      /* ASU Gray */
+  --batman-gold: #c09f00;            /* subtle gold accent for effects */
+  --batman-gold-muted: #a08600;
+  --batman-text: #FFFFFF;            /* primary text on dark */
+  --batman-text-muted: #BFBFBF;      /* UDS Gray 4 */
+
+  /* Brand colors (unchanged) */
+  --asu-maroon: #8C1D40;             /* ASU Maroon */
+  --asu-maroon-600: #741936;
+  --asu-maroon-400: #A53053;
+  --asu-gold: #FFC627;               /* ASU Gold */
+  --asu-gold-600: #E0AE20;
+  --asu-gold-400: #FFD55E;
+
+  /* Accents available (use sparingly) */
+  --asu-green: #78BE20;
+  --asu-blue: #00A3E0;
+  --asu-orange: #FF7F32;
+  --asu-gray: #747474;
+  --asu-copper: #AF674B;
+  --asu-turquoise: #4AB7C4;
+  --asu-pink: #E74973;
+
+  /* App semantic tokens */
+  --asu-sand: #191919;               /* dark surface */
+  --asu-ink: #000000;                /* navbar/ink background */
+  --asu-text: #FFFFFF;
+  --asu-text-muted: #BFBFBF;
+  --asu-border: rgba(255,255,255,0.12);
+  --hero-accent: var(--asu-gold);
+  --hero-hover: var(--asu-gold);
+  --hero-button-bg: var(--asu-gold);
+  --hero-button-text: #2b2b2b;
+  --heading-accent: var(--asu-gold);
+  --accent-color: var(--asu-gold);
+  --accent-bg-soft: rgba(255, 198, 39, 0.12);
+  --accent-border-soft: rgba(255, 198, 39, 0.35);
+  --underline-accent: var(--asu-maroon);
 }
 
 body {
@@ -180,13 +274,18 @@ body {
   background:
     radial-gradient(900px 500px at 110% -10%, rgba(140, 29, 64, 0.08), transparent 60%),
     radial-gradient(700px 400px at -10% 10%, rgba(255, 198, 39, 0.10), transparent 60%),
-    #ffffff;
+    var(--asu-ink);
 }
+
+/* Dark theme overrides for common Tailwind utilities used in components */
+[data-theme="asu-dark"] .bg-white { background-color: var(--asu-ink) !important; }
+[data-theme="asu-dark"] .text-black { color: var(--asu-text) !important; }
+[data-theme="asu-dark"] .border { border-color: rgba(255,255,255,0.12) !important; }
 
 /* Brand hover style for name: maroon text + gold underline on hover */
 .asu-brand {
   position: relative;
-  color: #111111;
+  color: var(--batman-text);
   transition: color 200ms ease;
 }
 
@@ -202,8 +301,18 @@ body {
 }
 
 .asu-brand:hover {
-  color: var(--asu-maroon);
+  color: var(--hero-hover);
   text-shadow: 0 0 10px rgba(255, 198, 39, 0.35);
 }
 
 .asu-brand:hover::after { width: 100%; }
+
+/* Hero button styles with theme variables */
+.hero-btn {
+  background: var(--hero-button-bg);
+  color: var(--hero-button-text);
+}
+.hero-btn:hover {
+  filter: brightness(1.05);
+  box-shadow: var(--asu-glow);
+}

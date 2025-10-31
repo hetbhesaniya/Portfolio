@@ -18,7 +18,7 @@ export default function Experience() {
       <section id="experience" className="py-20 bg-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--asu-maroon)' }}>Field Experience</h2>
-          <div className="w-24 h-1 mx-auto mb-4" style={{ background: 'var(--asu-gold)' }}></div>
+          <div className="w-24 h-1 mx-auto mb-4" style={{ background: 'var(--underline-accent)' }}></div>
           <p style={{ color: '#666' }}>Loading experience...</p>
         </div>
       </section>
@@ -36,10 +36,10 @@ export default function Experience() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--asu-maroon)' }}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--heading-accent)' }}>
             Field Experience
           </h2>
-          <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--asu-gold)' }}></div>
+          <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--underline-accent)' }}></div>
           <p className="text-xl max-w-3xl mx-auto" style={{ color: '#444' }}>
             A dossier of my professional engagements and key missions.
           </p>
@@ -54,8 +54,8 @@ export default function Experience() {
                 onClick={() => setActiveTab(index)}
                 className={`relative w-full text-left p-4 md:pl-6 text-lg font-semibold transition-colors duration-300`}
                 style={{
-                  color: activeTab === index ? 'var(--asu-maroon)' : '#555',
-                  background: activeTab === index ? 'rgba(255,198,39,0.1)' : 'transparent'
+                  color: activeTab === index ? 'var(--accent-color)' : '#555',
+                  background: activeTab === index ? 'var(--accent-bg-soft)' : 'transparent'
                 }}
               >
                 {job.company}
@@ -73,18 +73,18 @@ export default function Experience() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
                 className="p-8 rounded-md border"
-                style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.08)' }}
+                style={{ background: 'var(--asu-ink)', borderColor: 'var(--asu-border)' }}
               >
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
-                  <h3 className="text-2xl font-bold" style={{ color: '#111111' }}>{activeJob.role}</h3>
-                  <p className="font-semibold mt-1 sm:mt-0" style={{ color: 'var(--asu-maroon)' }}>{activeJob.duration}</p>
+                  <h3 className="text-2xl font-bold" style={{ color: 'var(--batman-text)' }}>{activeJob.role}</h3>
+                  <p className="font-semibold mt-1 sm:mt-0" style={{ color: 'var(--accent-color)' }}>{activeJob.duration}</p>
                 </div>
-                <p className="text-lg mb-6" style={{ color: '#555' }}>{activeJob.company}</p>
+                <p className="text-lg mb-6 font-semibold" style={{ color: 'var(--accent-color)' }}>{activeJob.company}</p>
 
-                <ul className="space-y-3" style={{ color: '#444' }}>
+                <ul className="space-y-3" style={{ color: 'var(--batman-text-muted)' }}>
                   {activeJob.description.map((desc, i) => (
                     <li key={i} className="flex items-start">
-                      <ChevronsRight className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style={{ color: 'var(--asu-maroon)' }} />
+                      <ChevronsRight className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style={{ color: 'var(--accent-color)' }} />
                       <span>{desc}</span>
                     </li>
                   ))}

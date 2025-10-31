@@ -27,10 +27,10 @@ export default function SkillsAlt() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--asu-maroon)' }}>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--heading-accent)' }}>
                         Technical Skills
                     </h2>
-                    <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--asu-gold)' }}></div>
+                    <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--underline-accent)' }}></div>
                     <p className="text-xl max-w-3xl mx-auto" style={{ color: '#444' }}>
                         The technologies and tools I wield to execute my missions.
                     </p>
@@ -44,7 +44,7 @@ export default function SkillsAlt() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
                         >
-                            <h3 className="text-2xl font-bold mb-8 text-center tracking-widest uppercase" style={{ color: 'var(--asu-maroon)' }}>
+                            <h3 className="text-2xl font-bold mb-8 text-center tracking-widest uppercase" style={{ color: 'var(--heading-accent)' }}>
                                 {category.title}
                             </h3>
                             
@@ -56,11 +56,11 @@ export default function SkillsAlt() {
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         whileHover={{ y: -5, scale: 1.05, boxShadow: "0 0 18px rgba(255, 198, 39, 0.25)" }}
                                         transition={{ duration: 0.3, delay: (categoryIndex * 0.2) + (skillIndex * 0.05) }}
-                                        className="p-4 rounded-md border flex items-center gap-3 cursor-default"
-                                        style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.08)' }}
+                                    className="p-4 rounded-md border flex items-center gap-3 cursor-default"
+                                    style={{ background: 'var(--asu-ink)', borderColor: 'var(--asu-border)' }}
                                     >
-                                        <CheckCircle className="w-5 h-5" style={{ color: 'var(--asu-maroon)' }}/>
-                                        <span className="font-medium text-lg" style={{ color: '#111111' }}>{skill}</span>
+                                        <CheckCircle className="w-5 h-5" style={{ color: 'var(--accent-color)' }}/>
+                                        <span className="font-medium text-lg" style={{ color: 'var(--batman-text)' }}>{skill}</span>
                                     </motion.div>
                                 ))}
                             </div>

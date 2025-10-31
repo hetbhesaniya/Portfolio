@@ -31,10 +31,10 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--asu-maroon)' }}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--heading-accent)' }}>
             Projects
           </h2>
-          <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--asu-gold)' }}></div>
+          <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--underline-accent)' }}></div>
           <p className="text-xl max-w-3xl mx-auto" style={{ color: '#444' }}>
             A collection of completed missions and tactical deployments.
           </p>
@@ -49,7 +49,7 @@ export default function Projects() {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
             className="rounded-md overflow-hidden border transition-all duration-300 group"
-            style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.08)' }}
+            style={{ background: 'var(--asu-ink)', borderColor: 'var(--asu-border)' }}
             >
               {project.image_url && (
                 <div className="relative overflow-hidden">
@@ -89,10 +89,10 @@ export default function Projects() {
               )}
 
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 transition-colors duration-300" style={{ color: '#111111' }}>
+                <h3 className="text-xl font-bold mb-3 transition-colors duration-300" style={{ color: 'var(--batman-text)' }}>
                   {project.title}
                 </h3>
-                <p className="mb-4 leading-relaxed" style={{ color: '#555' }}>
+                <p className="mb-4 leading-relaxed" style={{ color: 'var(--batman-text-muted)' }}>
                   {project.description}
                 </p>
 
@@ -102,7 +102,7 @@ export default function Projects() {
                       <span
                         key={i}
                         className="px-3 py-1 text-sm rounded-md font-mono"
-                        style={{ background: 'rgba(255,198,39,0.12)', color: 'var(--asu-maroon)', border: '1px solid rgba(255,198,39,0.25)' }}
+                        style={{ background: 'var(--accent-bg-soft)', color: 'var(--accent-color)', border: '1px solid var(--accent-border-soft)' }}
                       >
                         {tech}
                       </span>
@@ -110,7 +110,7 @@ export default function Projects() {
                   </div>
                 )}
 
-                <div className="flex space-x-4 pt-2" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
+                <div className="flex space-x-4 pt-2" style={{ borderTop: '1px solid var(--asu-border)' }}>
                   {project.demo_url && (
                     <a
                       href={project.demo_url}
@@ -129,7 +129,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center space-x-2 transition-colors duration-300"
-                      style={{ color: '#444' }}
+                      style={{ color: 'var(--batman-text-muted)' }}
                     >
                       <Github size={16} />
                       <span className="text-sm">Source Code</span>

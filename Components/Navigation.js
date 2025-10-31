@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/Components/ThemeProvider";
 
 export default function Navigation() {
+    const { theme, toggleTheme } = useTheme();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
@@ -66,12 +68,11 @@ export default function Navigation() {
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-                isScrolled 
-                    ? "bg-white/95 backdrop-blur border-b" 
-                    : "bg-white"
-            }`}
-            style={{ borderColor: 'rgba(0,0,0,0.06)' }}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b backdrop-blur`}
+            style={{
+                background: isScrolled ? 'var(--asu-ink)' : 'transparent',
+                borderColor: theme === 'asu-dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.06)'
+            }}
         >
             <div className="container mx-auto px-6 py-4">
                 <div className="flex justify-between items-center">
@@ -79,24 +80,39 @@ export default function Navigation() {
                         whileHover={{ scale: 1.02 }}
                         className="text-2xl font-bold cursor-pointer asu-brand"
                         onClick={() => scrollToSection("#home")}
+                        style={{ color: 'var(--batman-text)' }}
                     >
                         Het Bhesaniya
                     </motion.div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex space-x-8">
+                    <div className="hidden md:flex items-center space-x-6">
                         {navItems.map((item) => (
                             <motion.button
                                 key={item.name}
                                 whileHover={{ scale: 1.05 }}
                                 onClick={() => scrollToSection(item.href)}
                                 className="transition-colors duration-300 font-medium asu-underline-gold"
-                                style={{ color: '#111111' }}
+                                style={{ color: 'var(--batman-text)' }}
                                 aria-current={activeSection === item.id ? 'page' : undefined}
                             >
                                 {item.name}
                             </motion.button>
                         ))}
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={toggleTheme}
+                            aria-label="Toggle theme"
+                            className="p-2 rounded-md border"
+                            style={{
+                                borderColor: theme === 'asu-dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.06)',
+                                color: 'var(--batman-text)',
+                                background: 'transparent'
+                            }}
+                        >
+                            {theme === 'asu-dark' ? <Sun size={18} /> : <Moon size={18} />}
+                        </motion.button>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -104,7 +120,7 @@ export default function Navigation() {
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         className="md:hidden"
-                        style={{ color: '#111111' }}
+                        style={{ color: 'var(--batman-text)' }}
                     >
                         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </motion.button>
@@ -125,12 +141,29 @@ export default function Navigation() {
                                 whileHover={{ x: 10 }}
                                 onClick={() => scrollToSection(item.href)}
                                 className="block w-full text-left py-2 transition-colors duration-300 asu-underline-gold"
-                                style={{ color: '#111111' }}
+                                style={{ color: 'var(--batman-text)' }}
                                 aria-current={activeSection === item.id ? 'page' : undefined}
                             >
                                 {item.name}
                             </motion.button>
                         ))}
+                        <div className="pt-2">
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={toggleTheme}
+                                aria-label="Toggle theme"
+                                className="flex items-center gap-2 p-2 rounded-md border w-full"
+                                style={{
+                                    borderColor: theme === 'asu-dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.06)',
+                                    color: 'var(--batman-text)',
+                                    background: 'transparent'
+                                }}
+                            >
+                                {theme === 'asu-dark' ? <Sun size={18} /> : <Moon size={18} />}
+                                <span>Switch theme</span>
+                            </motion.button>
+                        </div>
                     </motion.div>
                 )}
             </div>

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
 
 export default function Hero() {
@@ -54,12 +55,52 @@ export default function Hero() {
                 </div>
             </div>
 
-            <div className="container mx-auto px-6 text-center relative z-10">
+            <div className="container mx-auto px-6 relative z-10">
+                {/* Responsive grid: centered layout (desktop side-by-side) */}
+                <div className="text-center md:text-center md:grid md:grid-cols-2 md:items-center md:justify-items-center md:gap-12">
+                {/* Desktop image column (right, centered) */}
+                <div className="hidden md:flex justify-center md:justify-center md:order-2">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="rounded-lg shadow-xl border overflow-hidden"
+                        style={{ borderColor: 'rgba(0,0,0,0.08)' }}
+                    >
+                        <Image
+                            src="/profile.jpg"
+                            alt="Het Bhesaniya"
+                            width={420}
+                            height={420}
+                            priority
+                            className="w-[420px] h-[420px] object-cover"
+                        />
+                    </motion.div>
+                </div>
+
                 <motion.div
+                    className="md:order-1 md:text-center"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
                 >
+                    {/* Mobile Profile Image */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="md:hidden mx-auto mb-8 rounded-full shadow-xl border overflow-hidden w-56 sm:w-64 aspect-square"
+                        style={{ borderColor: 'rgba(0,0,0,0.08)' }}
+                    >
+                        <Image
+                            src="/profile.jpg"
+                            alt="Het Bhesaniya"
+                            width={256}
+                            height={256}
+                            className="w-full h-full object-cover"
+                            priority
+                        />
+                    </motion.div>
                     <motion.div
                         className="mb-6"
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -77,7 +118,7 @@ export default function Hero() {
                         transition={{ duration: 1, delay: 0.8 }}
                         className="mb-8"
                     >
-                        <h2 className="text-2xl md:text-3xl font-light mb-4 tracking-widest uppercase" style={{ color: 'var(--asu-maroon)' }}>
+                        <h2 className="text-2xl md:text-3xl font-light mb-4 tracking-widest uppercase" style={{ color: 'var(--hero-accent)' }}>
                             Software Engineer & Data Analyst
                         </h2>
                         <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: '#444' }}>
@@ -93,7 +134,7 @@ export default function Hero() {
                         className="flex justify-center space-x-6 mb-12"
                     >
                         <motion.a
-                            whileHover={{ scale: 1.2, y: -5, color: '#c09f00' }}
+                            whileHover={{ scale: 1.2, y: -5, color: 'var(--hero-hover)' }}
                             whileTap={{ scale: 0.9 }}
                             href="https://github.com/hetbhesaniya"
                             target="_blank"
@@ -103,7 +144,7 @@ export default function Hero() {
                             <Github size={32} />
                         </motion.a>
                         <motion.a
-                            whileHover={{ scale: 1.2, y: -5, color: '#c09f00' }}
+                            whileHover={{ scale: 1.2, y: -5, color: 'var(--hero-hover)' }}
                             whileTap={{ scale: 0.9 }}
                             href="https://www.linkedin.com/in/het-bhesaniya/"
                             target="_blank"
@@ -113,9 +154,9 @@ export default function Hero() {
                             <Linkedin size={32} />
                         </motion.a>
                         <motion.a
-                            whileHover={{ scale: 1.2, y: -5, color: '#c09f00' }}
+                            whileHover={{ scale: 1.2, y: -5, color: 'var(--hero-hover)' }}
                             whileTap={{ scale: 0.9 }}
-                            href="mailto:hbhesani@asu.edu"
+                            href="mailto:hetbhesaniya0096@gmail.com"
                             className="text-gray-400 transition-colors duration-300"
                         >
                             <Mail size={32} />
@@ -129,12 +170,13 @@ export default function Hero() {
                         whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(255, 198, 39, 0.35)" }}
                         whileTap={{ scale: 0.95 }}
                         onClick={scrollToNext}
-                        className="px-8 py-3 rounded-md font-semibold transition-all duration-300 asu-btn-primary asu-gold-glow"
+                        className="px-8 py-3 rounded-md font-semibold transition-all duration-300 hero-btn"
                     >
                         Explore My Skills
                     
                     </motion.button>
                 </motion.div>
+                </div>
 
                 {/* Subtle ASU gold particles */}
                 <div className="pointer-events-none absolute inset-0 -z-0">

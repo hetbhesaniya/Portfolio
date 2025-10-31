@@ -19,10 +19,10 @@ export default function About() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--asu-maroon)' }}>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--heading-accent)' }}>
                         About Me
                     </h2>
-                    <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--asu-gold)' }}></div>
+                    <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--underline-accent)' }}></div>
                 </motion.div>
 
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -31,7 +31,7 @@ export default function About() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
-                        <div className="space-y-6 text-lg leading-relaxed" style={{ color: '#444' }}>
+                        <div className="space-y-6 text-lg leading-relaxed" style={{ color: 'var(--batman-text-muted)' }}>
                             <p>
                                 I’m a Software Engineer and Data Engineer with a passion for building systems that are as reliable as they are intelligent.  
                                 My focus lies at the intersection of backend engineering, cloud infrastructure, and data-driven problem solving.  
@@ -76,15 +76,15 @@ export default function About() {
                                 transition={{ duration: 0.6, delay: 0.2 * index }}
                                 whileHover={{ scale: 1.05 }}
                                 className="p-6 rounded-md border transition-all duration-300"
-                                style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.08)' }}
+                                style={{ background: 'var(--asu-ink)', borderColor: 'var(--asu-border)' }}
                             >
                                 <div className="flex items-center space-x-4">
                                     <div className="p-3 rounded-md" style={{ background: 'rgba(255,198,39,0.12)' }}>
-                                        <stat.icon className="w-6 h-6" style={{ color: 'var(--asu-maroon)' }} />
+                                        <stat.icon className="w-6 h-6" style={{ color: 'var(--accent-color)' }} />
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold" style={{ color: '#111111' }}>{stat.value}</h3>
-                                        <p style={{ color: '#555' }}>{stat.label}</p>
+                                        <h3 className="text-2xl font-bold" style={{ color: 'var(--batman-text)' }}>{stat.value}</h3>
+                                        <p style={{ color: 'var(--batman-text-muted)' }}>{stat.label}</p>
                                     </div>
                                 </div>
                             </motion.div>

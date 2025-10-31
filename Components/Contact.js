@@ -69,10 +69,10 @@ export default function Contact() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--asu-maroon)' }}>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--heading-accent)' }}>
                         Lets Connect
                     </h2>
-                    <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--asu-gold)' }}></div>
+                    <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--underline-accent)' }}></div>
                     <p className="text-xl max-w-3xl mx-auto" style={{ color: '#444' }}>
                         Open to collaborations, opportunities, or just a good tech chat.
                     </p>
@@ -87,7 +87,7 @@ export default function Contact() {
                         className="space-y-8"
                     >
                         <div>
-                            <h3 className="text-2xl font-bold mb-6 uppercase tracking-widest" style={{ color: 'var(--asu-maroon)' }}>Get in Touch</h3>
+                            <h3 className="text-2xl font-bold mb-6 uppercase tracking-widest" style={{ color: 'var(--heading-accent)' }}>Get in Touch</h3>
                             <div className="space-y-6">
                                 {contactInfo.map((info, index) => (
                                     <motion.div
@@ -101,17 +101,17 @@ export default function Contact() {
                                             <info.icon className="w-5 h-5" style={{ color: 'var(--asu-maroon)' }} />
                                         </div>
                                         <div>
-                                            <p className="text-sm" style={{ color: '#666' }}>{info.label}</p>
+                                            <p className="text-sm" style={{ color: 'var(--batman-text-muted)' }}>{info.label}</p>
                                             {info.link ? (
                                                 <a
                                                     href={info.link}
                                                     className="transition-colors duration-300"
-                                                    style={{ color: '#111111' }}
+                                                    style={{ color: 'var(--batman-text)' }}
                                                 >
                                                     {info.value}
                                                 </a>
                                             ) : (
-                                                <p style={{ color: '#111111' }}>{info.value}</p>
+                                                <p style={{ color: 'var(--batman-text)' }}>{info.value}</p>
                                             )}
                                         </div>
                                     </motion.div>
@@ -120,7 +120,7 @@ export default function Contact() {
                         </div>
 
                         <div>
-                            <h3 className="text-2xl font-bold mb-6 uppercase tracking-widest" style={{ color: 'var(--asu-maroon)' }}>Social Network</h3>
+                            <h3 className="text-2xl font-bold mb-6 uppercase tracking-widest" style={{ color: 'var(--heading-accent)' }}>Social Network</h3>
                             <div className="flex space-x-4">
                                 {socialLinks.map((social) => (
                                     <motion.a
@@ -131,7 +131,7 @@ export default function Contact() {
                                         whileHover={{ scale: 1.1, y: -5 }}
                                         whileTap={{ scale: 0.9 }}
                                         className="p-3 rounded-md transition-all duration-300"
-                                        style={{ background: '#f3f4f6', color: '#444' }}
+                                        style={{ background: 'var(--asu-ink)', color: 'var(--batman-text-muted)', border: '1px solid var(--asu-border)' }}
                                     >
                                         <social.icon size={24} />
                                     </motion.a>
@@ -146,9 +146,9 @@ export default function Contact() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="p-8 rounded-md border"
-                        style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.08)' }}
+                        style={{ background: 'var(--asu-ink)', borderColor: 'var(--asu-border)' }}
                     >
-                        <h3 className="text-2xl font-bold mb-6 uppercase tracking-widest" style={{ color: 'var(--asu-maroon)' }}>Send Message</h3>
+                        <h3 className="text-2xl font-bold mb-6 uppercase tracking-widest" style={{ color: 'var(--heading-accent)' }}>Send Message</h3>
                         
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
