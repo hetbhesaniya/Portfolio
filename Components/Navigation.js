@@ -1,8 +1,25 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { useTheme } from "@/Components/ThemeProvider";
+
+// Pitchfork Icon Component - uses PNG images based on theme
+const PitchforkIcon = ({ size = 24, className = "" }) => {
+    const { theme } = useTheme();
+    const imageSrc = theme === 'asu-dark' ? '/pitchfork-gold.png' : '/pitchfork-maroon.png';
+    
+    return (
+        <Image
+            src={imageSrc}
+            alt="Pitchfork toggle"
+            width={size}
+            height={size}
+            className={className}
+        />
+    );
+};
 
 export default function Navigation() {
     const { theme, toggleTheme } = useTheme();
@@ -45,23 +62,58 @@ export default function Navigation() {
 
         if (!sections.length) return;
 
+        const handleScroll = () => {
+            // Find the section closest to the top of viewport
+            let currentSection = 'home';
+            let minDistance = Infinity;
+
+            sections.forEach((section) => {
+                const rect = section.getBoundingClientRect();
+                // Check if section is in viewport
+                if (rect.top <= 100 && rect.bottom >= 0) {
+                    const distance = Math.abs(rect.top);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        currentSection = section.id;
+                    }
+                }
+            });
+
+            setActiveSection(currentSection);
+        };
+
+        // Initial check
+        handleScroll();
+
+        // Add scroll listener
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        
+        // Also use IntersectionObserver for more accurate detection
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        setActiveSection(entry.target.id);
+                        const rect = entry.boundingClientRect;
+                        // Only update if section is in the upper portion of viewport
+                        if (rect.top <= 150) {
+                            setActiveSection(entry.target.id);
+                        }
                     }
                 });
             },
             {
                 root: null,
-                rootMargin: '-40% 0px -55% 0px',
-                threshold: 0.1
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: [0.1, 0.25, 0.5]
             }
         );
 
         sections.forEach((section) => observer.observe(section));
-        return () => observer.disconnect();
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            observer.disconnect();
+        };
     }, []);
 
     return (
@@ -75,7 +127,8 @@ export default function Navigation() {
             }}
         >
             <div className="container mx-auto px-6 py-4">
-                <div className="flex justify-between items-center">
+                <div className="flex items-center relative">
+                    {/* Left: Name */}
                     <motion.div 
                         whileHover={{ scale: 1.02 }}
                         className="text-2xl font-bold cursor-pointer asu-brand"
@@ -85,8 +138,8 @@ export default function Navigation() {
                         Het Bhesaniya
                     </motion.div>
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-6">
+                    {/* Center: Desktop Navigation */}
+                    <div className="hidden md:flex items-center space-x-6 absolute left-1/2 transform -translate-x-1/2">
                         {navItems.map((item) => (
                             <motion.button
                                 key={item.name}
@@ -99,31 +152,33 @@ export default function Navigation() {
                                 {item.name}
                             </motion.button>
                         ))}
+                    </div>
+
+                    {/* Right: Toggle Button + Mobile Menu */}
+                    <div className="ml-auto flex items-center space-x-4">
                         <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={toggleTheme}
                             aria-label="Toggle theme"
-                            className="p-2 rounded-md border"
+                            className="p-3 rounded-md border hidden md:block"
                             style={{
                                 borderColor: theme === 'asu-dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.06)',
-                                color: 'var(--batman-text)',
+                                color: theme === 'asu-dark' ? 'var(--asu-gold)' : 'var(--asu-maroon)',
                                 background: 'transparent'
                             }}
                         >
-                            {theme === 'asu-dark' ? <Sun size={18} /> : <Moon size={18} />}
+                            <PitchforkIcon size={24} />
+                        </motion.button>
+                        <motion.button
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="md:hidden"
+                            style={{ color: 'var(--batman-text)' }}
+                        >
+                            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                         </motion.button>
                     </div>
-
-                    {/* Mobile Menu Button */}
-                    <motion.button
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden"
-                        style={{ color: 'var(--batman-text)' }}
-                    >
-                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </motion.button>
                 </div>
 
                 {/* Mobile Menu */}
@@ -156,11 +211,11 @@ export default function Navigation() {
                                 className="flex items-center gap-2 p-2 rounded-md border w-full"
                                 style={{
                                     borderColor: theme === 'asu-dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.06)',
-                                    color: 'var(--batman-text)',
+                                    color: theme === 'asu-dark' ? 'var(--asu-gold)' : 'var(--asu-maroon)',
                                     background: 'transparent'
                                 }}
                             >
-                                {theme === 'asu-dark' ? <Sun size={18} /> : <Moon size={18} />}
+                                <PitchforkIcon size={24} />
                                 <span>Switch theme</span>
                             </motion.button>
                         </div>

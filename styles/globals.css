@@ -45,6 +45,8 @@ html, body, #__next {
   --accent-border-soft: rgba(140, 29, 64, 0.25);
   /* Underline accent for section dividers */
   --underline-accent: var(--asu-gold);
+  /* Brand hover underline */
+  --brand-underline: var(--asu-gold);
 }
 
 /* Theme tokens: ASU Light */
@@ -79,6 +81,7 @@ html, body, #__next {
   --accent-bg-soft: rgba(140, 29, 64, 0.12);
   --accent-border-soft: rgba(140, 29, 64, 0.25);
   --underline-accent: var(--asu-gold);
+  --brand-underline: var(--asu-gold);
 }
 
 /* Theme tokens: ASU Dark */
@@ -125,13 +128,13 @@ html, body, #__next {
   --accent-bg-soft: rgba(255, 198, 39, 0.12);
   --accent-border-soft: rgba(255, 198, 39, 0.35);
   --underline-accent: var(--asu-maroon);
+  --brand-underline: var(--asu-maroon);
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--batman-black);
   color: var(--batman-text);
-  cursor: crosshair;
 }
 
 .batman-glow {
@@ -248,7 +251,7 @@ body {
   background: linear-gradient(90deg, var(--asu-gold-400) 0%, var(--asu-gold) 100%);
 }
 
-/* Navigation underline (gold) */
+/* Navigation underline - theme aware */
 .asu-underline-gold {
   position: relative;
 }
@@ -260,8 +263,13 @@ body {
   bottom: -6px;
   height: 3px;
   width: 0;
-  background: var(--asu-gold);
+  background: var(--asu-maroon);
   transition: width 200ms ease;
+}
+
+/* Dark theme: gold underline */
+[data-theme="asu-dark"] .asu-underline-gold::after {
+  background: var(--asu-gold);
 }
 
 .asu-underline-gold:hover::after,
@@ -296,7 +304,7 @@ body {
   bottom: -6px;
   height: 3px;
   width: 0;
-  background: var(--asu-gold);
+  background: var(--brand-underline);
   transition: width 200ms ease;
 }
 

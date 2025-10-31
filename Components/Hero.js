@@ -2,9 +2,11 @@ import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
+import { useTheme } from "@/Components/ThemeProvider";
 
 export default function Hero() {
     const heroRef = useRef(null);
+    const { theme } = useTheme();
 
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -22,12 +24,6 @@ export default function Hero() {
                 // Use a transition for smoother movement
                 bg.style.transform = `translate(${xPos}px, ${yPos}px)`;
             }
-
-            const spotlight = heroRef.current.querySelector('.spotlight');
-            if(spotlight) {
-                // Instantly move the spotlight
-                spotlight.style.transform = `translate(calc(${clientX}px - 50%), calc(${clientY}px - 50%))`;
-            }
         };
 
         window.addEventListener('mousemove', handleMouseMove);
@@ -40,13 +36,6 @@ export default function Hero() {
 
     return (
         <section ref={heroRef} id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden asu-white-maroon-bg">
-            {/* Interactive Spotlight Effect */}
-            <div 
-                className="spotlight absolute top-0 left-0 w-96 h-96 rounded-full pointer-events-none z-20"
-                style={{
-                    background: 'radial-gradient(circle, rgba(255, 198, 39, 0.08) 0%, rgba(255, 198, 39, 0) 60%)'
-                }}
-            ></div>
 
             {/* Parallax Background */}
             <div className="absolute inset-0">
@@ -59,21 +48,36 @@ export default function Hero() {
                 {/* Responsive grid: centered layout (desktop side-by-side) */}
                 <div className="text-center md:text-center md:grid md:grid-cols-2 md:items-center md:justify-items-center md:gap-12">
                 {/* Desktop image column (right, centered) */}
-                <div className="hidden md:flex justify-center md:justify-center md:order-2">
+                <div className="hidden md:flex flex-col items-center justify-center md:order-2">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="rounded-lg shadow-xl border overflow-hidden"
+                        className="rounded-full shadow-xl border overflow-hidden mb-4"
                         style={{ borderColor: 'rgba(0,0,0,0.08)' }}
                     >
                         <Image
                             src="/profile.jpg"
                             alt="Het Bhesaniya"
-                            width={420}
-                            height={420}
+                            width={480}
+                            height={480}
                             priority
-                            className="w-[420px] h-[420px] object-cover"
+                            className="w-[480px] h-[480px] object-cover"
+                        />
+                    </motion.div>
+                    {/* ASU Grad 2025 Logo - Theme Aware */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                        className="mt-2"
+                    >
+                        <Image
+                            src={theme === 'asu-dark' ? '/asu-grad-2025-dark.png' : '/asu-grad-2025.png'}
+                            alt="ASU Grad 2025"
+                            width={280}
+                            height={84}
+                            className="h-auto"
                         />
                     </motion.div>
                 </div>
@@ -178,23 +182,6 @@ export default function Hero() {
                 </motion.div>
                 </div>
 
-                {/* Subtle ASU gold particles */}
-                <div className="pointer-events-none absolute inset-0 -z-0">
-                    {[...Array(8)].map((_, i) => (
-                        <motion.span
-                            key={i}
-                            initial={{ opacity: 0, scale: 0.6 }}
-                            animate={{ opacity: [0.15, 0.4, 0.15], y: [0, -8, 0] }}
-                            transition={{ duration: 4 + i * 0.2, repeat: Infinity, delay: i * 0.3 }}
-                            className="absolute block w-1.5 h-1.5 rounded-full"
-                            style={{
-                                backgroundColor: 'var(--asu-gold)',
-                                left: `${(i * 13) % 100}%`,
-                                top: `${(i * 17) % 100}%`
-                            }}
-                        />
-                    ))}
-                </div>
 
                 <motion.div
                     initial={{ opacity: 0 }}
