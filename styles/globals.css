@@ -7,16 +7,6 @@ html, body, #__next {
 }
 
 :root {
-  /* Existing theme tokens */
-  --batman-black: #050505;
-  --batman-charcoal: #111111;
-  --batman-gray: #1a1a1a;
-  --batman-light-gray: #2b2b2b;
-  --batman-gold: #c09f00; /* More desaturated, tarnished gold */
-  --batman-gold-muted: #a08600;
-  --batman-text: #e0e0e0;
-  --batman-text-muted: #b0b0b0;
-
   /* ASU theme tokens */
   --asu-maroon: #8C1D40;          /* ASU Maroon */
   --asu-maroon-600: #741936;      /* darker shade */
@@ -51,16 +41,6 @@ html, body, #__next {
 
 /* Theme tokens: ASU Light */
 [data-theme="asu-light"] {
-  --batman-black: #ffffff;            /* page background */
-  --batman-charcoal: #f7f7f7;
-  --batman-gray: #eaeaea;
-  --batman-light-gray: #e5e7eb;
-  --batman-gold: #c09f00;
-  --batman-gold-muted: #a08600;
-  --batman-text: #111111;             /* primary text */
-  --batman-text-muted: #444444;
-
-  /* ASU brand stays, but adjust perceived contrast if needed */
   --asu-maroon: #8C1D40;
   --asu-maroon-600: #741936;
   --asu-maroon-400: #A53053;
@@ -86,17 +66,7 @@ html, body, #__next {
 
 /* Theme tokens: ASU Dark */
 [data-theme="asu-dark"] {
-  /* Base surfaces and text per ASU brand dark usage */
-  --batman-black: #000000;           /* Rich Black */
-  --batman-charcoal: #191919;        /* UDS Gray 1 */
-  --batman-gray: #484848;            /* UDS Gray 2 */
-  --batman-light-gray: #747474;      /* ASU Gray */
-  --batman-gold: #c09f00;            /* subtle gold accent for effects */
-  --batman-gold-muted: #a08600;
-  --batman-text: #FFFFFF;            /* primary text on dark */
-  --batman-text-muted: #BFBFBF;      /* UDS Gray 4 */
-
-  /* Brand colors (unchanged) */
+  /* Brand colors */
   --asu-maroon: #8C1D40;             /* ASU Maroon */
   --asu-maroon-600: #741936;
   --asu-maroon-400: #A53053;
@@ -133,16 +103,8 @@ html, body, #__next {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--batman-black);
-  color: var(--batman-text);
-}
-
-.batman-glow {
-  box-shadow: 0 0 15px rgba(192, 159, 0, 0.1);
-}
-
-.batman-text-glow {
-  text-shadow: 0 0 8px rgba(192, 159, 0, 0.4);
+  background: var(--asu-ink);
+  color: var(--asu-text);
 }
 
 .scrollbar-hide {
@@ -168,59 +130,6 @@ body {
   opacity: 0.02;
   pointer-events: none;
   z-index: 10;
-}
-
-.cut-corner {
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
-}
-
-/* Text Glitch Effect */
-.glitch-text-container {
-  position: relative;
-  cursor: pointer;
-}
-
-.glitch-text {
-  position: relative;
-  transition: 0.2s ease-in-out;
-}
-
-.glitch-text-container:hover .glitch-text {
-  color: var(--batman-gold);
-}
-
-.glitch-text-container:hover .glitch-text::before,
-.glitch-text-container:hover .glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--batman-black);
-  overflow: hidden;
-}
-
-.glitch-text-container:hover .glitch-text::before {
-  left: 2px;
-  text-shadow: -2px 0 var(--batman-gold-muted);
-  animation: glitch-anim-1 1s infinite linear alternate-reverse;
-}
-
-.glitch-text-container:hover .glitch-text::after {
-  left: -2px;
-  text-shadow: -2px 0 var(--batman-gold), 2px 2px var(--batman-gold-muted);
-  animation: glitch-anim-2 1s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim-1 {
-  0% { clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%); }
-  100% { clip-path: polygon(0 75%, 100% 75%, 100% 80%, 0 80%); }
-}
-
-@keyframes glitch-anim-2 {
-  0% { clip-path: polygon(0 40%, 100% 40%, 100% 45%, 0 45%); }
-  100% { clip-path: polygon(0 15%, 100% 15%, 100% 20%, 0 20%); }
 }
 
 /* ASU helpers */
@@ -293,7 +202,7 @@ body {
 /* Brand hover style for name: maroon text + gold underline on hover */
 .asu-brand {
   position: relative;
-  color: var(--batman-text);
+  color: var(--asu-text);
   transition: color 200ms ease;
 }
 

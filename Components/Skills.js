@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 
-export default function SkillsAlt() {
+export default function Skills() {
     const skillCategories = [
         {
             title: "Frontend",
@@ -60,7 +60,7 @@ export default function SkillsAlt() {
                                     style={{ background: 'var(--asu-ink)', borderColor: 'var(--asu-border)' }}
                                     >
                                         <CheckCircle className="w-5 h-5" style={{ color: 'var(--accent-color)' }}/>
-                                        <span className="font-medium text-lg" style={{ color: 'var(--batman-text)' }}>{skill}</span>
+                                        <span className="font-medium text-lg" style={{ color: 'var(--asu-text)' }}>{skill}</span>
                                     </motion.div>
                                 ))}
                             </div>

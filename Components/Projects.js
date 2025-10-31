@@ -9,14 +9,14 @@ export default function Projects() {
     fetch("/Data/projects.json")
       .then(res => res.json())
       .then(data => setProjects(data))
-      .catch(err => console.error("Error loading projects:", err));
+      .catch(() => setProjects([]));
   }, []);
 
   if (!projects.length) {
     return (
       <section id="projects" className="py-20 bg-white">
         <div className="container mx-auto px-6 text-center">
-          <p style={{ color: '#666' }}>Loading projects...</p>
+          <p style={{ color: 'var(--asu-text-muted)' }}>Loading projects...</p>
         </div>
       </section>
     );
@@ -78,7 +78,7 @@ export default function Projects() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-3 rounded-md text-white transition-colors duration-300"
-                          style={{ background: '#1f2937' }}
+                          style={{ background: 'var(--asu-ink)' }}
                         >
                           <Github size={20} />
                         </motion.a>
@@ -89,10 +89,10 @@ export default function Projects() {
               )}
 
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 transition-colors duration-300" style={{ color: 'var(--batman-text)' }}>
+                <h3 className="text-xl font-bold mb-3 transition-colors duration-300" style={{ color: 'var(--asu-text)' }}>
                   {project.title}
                 </h3>
-                <p className="mb-4 leading-relaxed" style={{ color: 'var(--batman-text-muted)' }}>
+                <p className="mb-4 leading-relaxed" style={{ color: 'var(--asu-text-muted)' }}>
                   {project.description}
                 </p>
 
@@ -129,7 +129,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center space-x-2 transition-colors duration-300"
-                      style={{ color: 'var(--batman-text-muted)' }}
+                      style={{ color: 'var(--asu-text-muted)' }}
                     >
                       <Github size={16} />
                       <span className="text-sm">Source Code</span>

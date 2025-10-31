@@ -1,11 +1,7 @@
 export function Input({ className = "", ...props }) {
   return (
     <input
-      className={
-        "w-full rounded-md border px-3 py-2 text-sm outline-none " +
-        "bg-white/5 border-gray-600 text-white focus:border-yellow-500 " +
-        className
-      }
+      className={`w-full rounded-md border px-3 py-2 text-sm outline-none ${className}`}
       {...props}
     />
   );

@@ -1,7 +1,6 @@
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Instagram, Send } from "lucide-react";
 import { Button } from "@/Components/ui/button";
 import { Input } from "@/Components/ui/input";
 import { Textarea } from "@/Components/ui/textarea";
@@ -37,8 +36,8 @@ export default function Contact() {
         {
             icon: Mail,
             label: "Email",
-            value: "hbhesani@asu.edu",
-            link: "mailto:your.hbhesani@asu.edu"
+            value: "hetbhesaniya0096@gmail.com",
+            link: "mailto:hetbhesaniya0096@gmail.com"
         },
         {
             icon: Phone,
@@ -57,7 +56,7 @@ export default function Contact() {
     const socialLinks = [
         { icon: Github, link: "https://github.com/hetbhesaniya", label: "GitHub" },
         { icon: Linkedin, link: "https://www.linkedin.com/in/het-bhesaniya/", label: "LinkedIn" },
-    
+        { icon: Instagram, link: "https://www.instagram.com/het__oo96", label: "Instagram" }
     ];
 
     return (
@@ -101,17 +100,17 @@ export default function Contact() {
                                             <info.icon className="w-5 h-5" style={{ color: 'var(--asu-maroon)' }} />
                                         </div>
                                         <div>
-                                            <p className="text-sm" style={{ color: 'var(--batman-text-muted)' }}>{info.label}</p>
+                                            <p className="text-sm" style={{ color: 'var(--asu-text-muted)' }}>{info.label}</p>
                                             {info.link ? (
                                                 <a
                                                     href={info.link}
                                                     className="transition-colors duration-300"
-                                                    style={{ color: 'var(--batman-text)' }}
+                                                    style={{ color: 'var(--asu-text)' }}
                                                 >
                                                     {info.value}
                                                 </a>
                                             ) : (
-                                                <p style={{ color: 'var(--batman-text)' }}>{info.value}</p>
+                                                <p style={{ color: 'var(--asu-text)' }}>{info.value}</p>
                                             )}
                                         </div>
                                     </motion.div>
@@ -131,7 +130,7 @@ export default function Contact() {
                                         whileHover={{ scale: 1.1, y: -5 }}
                                         whileTap={{ scale: 0.9 }}
                                         className="p-3 rounded-md transition-all duration-300"
-                                        style={{ background: 'var(--asu-ink)', color: 'var(--batman-text-muted)', border: '1px solid var(--asu-border)' }}
+                                        style={{ background: 'var(--asu-ink)', color: 'var(--asu-text-muted)', border: '1px solid var(--asu-border)' }}
                                     >
                                         <social.icon size={24} />
                                     </motion.a>

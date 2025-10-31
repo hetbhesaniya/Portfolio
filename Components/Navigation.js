@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -133,7 +132,7 @@ export default function Navigation() {
                         whileHover={{ scale: 1.02 }}
                         className="text-2xl font-bold cursor-pointer asu-brand"
                         onClick={() => scrollToSection("#home")}
-                        style={{ color: 'var(--batman-text)' }}
+                        style={{ color: 'var(--asu-text)' }}
                     >
                         Het Bhesaniya
                     </motion.div>
@@ -146,7 +145,7 @@ export default function Navigation() {
                                 whileHover={{ scale: 1.05 }}
                                 onClick={() => scrollToSection(item.href)}
                                 className="transition-colors duration-300 font-medium asu-underline-gold"
-                                style={{ color: 'var(--batman-text)' }}
+                                style={{ color: 'var(--asu-text)' }}
                                 aria-current={activeSection === item.id ? 'page' : undefined}
                             >
                                 {item.name}
@@ -174,7 +173,7 @@ export default function Navigation() {
                             whileTap={{ scale: 0.9 }}
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className="md:hidden"
-                            style={{ color: 'var(--batman-text)' }}
+                            style={{ color: 'var(--asu-text)' }}
                         >
                             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                         </motion.button>
@@ -196,7 +195,7 @@ export default function Navigation() {
                                 whileHover={{ x: 10 }}
                                 onClick={() => scrollToSection(item.href)}
                                 className="block w-full text-left py-2 transition-colors duration-300 asu-underline-gold"
-                                style={{ color: 'var(--batman-text)' }}
+                                style={{ color: 'var(--asu-text)' }}
                                 aria-current={activeSection === item.id ? 'page' : undefined}
                             >
                                 {item.name}

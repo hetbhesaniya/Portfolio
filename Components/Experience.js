@@ -19,7 +19,7 @@ export default function Experience() {
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--asu-maroon)' }}>Field Experience</h2>
           <div className="w-24 h-1 mx-auto mb-4" style={{ background: 'var(--underline-accent)' }}></div>
-          <p style={{ color: '#666' }}>Loading experience...</p>
+          <p style={{ color: 'var(--asu-text-muted)' }}>Loading experience...</p>
         </div>
       </section>
     );
@@ -54,7 +54,7 @@ export default function Experience() {
                 onClick={() => setActiveTab(index)}
                 className={`relative w-full text-left p-4 md:pl-6 text-lg font-semibold transition-colors duration-300`}
                 style={{
-                  color: activeTab === index ? 'var(--accent-color)' : '#555',
+                  color: activeTab === index ? 'var(--accent-color)' : 'var(--asu-text-muted)',
                   background: activeTab === index ? 'var(--accent-bg-soft)' : 'transparent'
                 }}
               >
@@ -76,12 +76,12 @@ export default function Experience() {
                 style={{ background: 'var(--asu-ink)', borderColor: 'var(--asu-border)' }}
               >
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
-                  <h3 className="text-2xl font-bold" style={{ color: 'var(--batman-text)' }}>{activeJob.role}</h3>
+                  <h3 className="text-2xl font-bold" style={{ color: 'var(--asu-text)' }}>{activeJob.role}</h3>
                   <p className="font-semibold mt-1 sm:mt-0" style={{ color: 'var(--accent-color)' }}>{activeJob.duration}</p>
                 </div>
                 <p className="text-lg mb-6 font-semibold" style={{ color: 'var(--accent-color)' }}>{activeJob.company}</p>
 
-                <ul className="space-y-3" style={{ color: 'var(--batman-text-muted)' }}>
+                <ul className="space-y-3" style={{ color: 'var(--asu-text-muted)' }}>
                   {activeJob.description.map((desc, i) => (
                     <li key={i} className="flex items-start">
                       <ChevronsRight className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style={{ color: 'var(--accent-color)' }} />

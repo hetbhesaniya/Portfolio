@@ -126,7 +126,6 @@ export default function Hero() {
                             Software Engineer & Data Analyst
                         </h2>
                         <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: '#444' }}>
-                          
                             Building reliable systems, scalable pipelines, and intelligent solutions
                         </p>
                     </motion.div>

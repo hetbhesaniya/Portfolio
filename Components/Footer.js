@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -21,16 +20,16 @@ export default function Footer() {
                         Het Bhesaniya
                     </motion.button>
                     
-                    <div className="flex items-center justify-center space-x-2 mb-4" style={{ color: 'var(--batman-text-muted)' }}>
+                    <div className="flex items-center justify-center space-x-2 mb-4" style={{ color: 'var(--asu-text-muted)' }}>
                         <span>Forged with code, refined by data</span>
                     </div>
                     
-                    <p className="text-sm" style={{ color: 'var(--batman-text-muted)' }}>
+                    <p className="text-sm" style={{ color: 'var(--asu-text-muted)' }}>
                         © {new Date().getFullYear()} Het Bhesaniya. All rights reserved.
                     </p>
                     
                     <div className="mt-8 pt-8" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-                        <p className="text-xs font-mono" style={{ color: 'var(--batman-text-muted)' }}>
+                        <p className="text-xs font-mono" style={{ color: 'var(--asu-text-muted)' }}>
                             "Building reliable systems with speed and clarity."
                         </p>
                     </div>

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { User, Award, Coffee } from "lucide-react";
@@ -31,7 +30,7 @@ export default function About() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
-                        <div className="space-y-6 text-lg leading-relaxed" style={{ color: 'var(--batman-text-muted)' }}>
+                        <div className="space-y-6 text-lg leading-relaxed" style={{ color: 'var(--asu-text-muted)' }}>
                             <p>
                                 I’m a Software Engineer and Data Engineer with a passion for building systems that are as reliable as they are intelligent.  
                                 My focus lies at the intersection of backend engineering, cloud infrastructure, and data-driven problem solving.  
@@ -83,8 +82,8 @@ export default function About() {
                                         <stat.icon className="w-6 h-6" style={{ color: 'var(--accent-color)' }} />
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold" style={{ color: 'var(--batman-text)' }}>{stat.value}</h3>
-                                        <p style={{ color: 'var(--batman-text-muted)' }}>{stat.label}</p>
+                                        <h3 className="text-2xl font-bold" style={{ color: 'var(--asu-text)' }}>{stat.value}</h3>
+                                        <p style={{ color: 'var(--asu-text-muted)' }}>{stat.label}</p>
                                     </div>
                                 </div>
                             </motion.div>
