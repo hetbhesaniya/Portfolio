@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronsRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Briefcase, MapPin, Calendar, ChevronRight, Award } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/Components/ui/dialog";
+import { Badge } from "@/Components/ui/badge";
 
 export default function Experience() {
   const [jobs, setJobs] = useState([]);
-  const [activeTab, setActiveTab] = useState(0);
+  const [selectedExperience, setSelectedExperience] = useState(null);
 
   useEffect(() => {
     fetch("/Data/Experience.json")
@@ -12,12 +14,11 @@ export default function Experience() {
       .then(data => setJobs(data));
   }, []);
 
-  // Render a lightweight placeholder so the #experience anchor always exists
   if (!jobs.length) {
     return (
       <section id="experience" className="py-20 bg-white">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--asu-maroon)' }}>Field Experience</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--heading-accent)' }}>Experience</h2>
           <div className="w-24 h-1 mx-auto mb-4" style={{ background: 'var(--underline-accent)' }}></div>
           <p style={{ color: 'var(--asu-text-muted)' }}>Loading experience...</p>
         </div>
@@ -25,75 +26,222 @@ export default function Experience() {
     );
   }
 
-  const activeJob = jobs[activeTab];
-
   return (
-    <section id="experience" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 asu-text-glow" style={{ color: 'var(--heading-accent)' }}>
-            Field Experience
-          </h2>
-          <div className="w-24 h-1 mx-auto mb-8" style={{ background: 'var(--underline-accent)' }}></div>
-          <p className="text-xl max-w-3xl mx-auto" style={{ color: '#444' }}>
-            A dossier of my professional engagements and key missions.
-          </p>
-        </motion.div>
+    <>
+      <section id="experience" className="py-16" style={{ background: 'var(--asu-ink)' }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 asu-text-glow" style={{ color: 'var(--heading-accent)' }}>
+              Experience
+            </h2>
+            <div className="w-24 h-1 mx-auto rounded-full" style={{ background: 'var(--underline-accent)' }} />
+          </motion.div>
 
-        <div className="flex flex-col md:flex-row gap-8 lg:gap-12">
-          {/* Tabs */}
-          <div className="flex md:flex-col overflow-x-auto scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
+          <div className="space-y-4">
             {jobs.map((job, index) => (
-              <button
+              <motion.div
                 key={job.id}
-                onClick={() => setActiveTab(index)}
-                className={`relative w-full text-left p-4 md:pl-6 text-lg font-semibold transition-colors duration-300`}
-                style={{
-                  color: activeTab === index ? 'var(--accent-color)' : 'var(--asu-text-muted)',
-                  background: activeTab === index ? 'var(--accent-bg-soft)' : 'transparent'
-                }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                {job.company}
-              </button>
+                <div
+                  className="hover:shadow-xl transition-all duration-300 cursor-pointer group rounded-lg border overflow-hidden"
+                  onClick={() => setSelectedExperience(job)}
+                  style={{
+                    background: 'var(--asu-ink)',
+                    borderColor: 'var(--asu-border)'
+                  }}
+                >
+                  <div className="p-5 flex items-center gap-6">
+                    {/* Icon */}
+                    <div
+                      className="w-14 h-14 rounded-xl flex items-center justify-center shadow-md flex-shrink-0"
+                      style={{
+                        background: index % 2 === 0
+                          ? 'linear-gradient(135deg, var(--asu-maroon) 0%, var(--asu-maroon-600) 100%)'
+                          : 'linear-gradient(135deg, var(--asu-gold) 0%, var(--asu-gold-600) 100%)'
+                      }}
+                    >
+                      <Briefcase className="w-7 h-7 text-white" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-xl font-bold mb-1" style={{ color: 'var(--heading-accent)' }}>
+                        {job.role}
+                      </h3>
+                      <p className="text-base font-semibold mb-2" style={{ color: 'var(--asu-text)' }}>
+                        {job.company}
+                      </p>
+                      <div className="flex flex-wrap items-center gap-4 text-sm" style={{ color: 'var(--asu-text-muted)' }}>
+                        <div className="flex items-center gap-1.5">
+                          <MapPin className="w-4 h-4" />
+                          <span>{job.location}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Calendar className="w-4 h-4" />
+                          <span>{job.duration}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Skills */}
+                    <div className="hidden lg:flex flex-wrap gap-2 max-w-xs">
+                      {job.skills.slice(0, 4).map((skill, skillIndex) => (
+                        <Badge
+                          key={skillIndex}
+                          className="px-2 py-1 text-xs"
+                          style={{
+                            backgroundColor: index % 2 === 0 ? 'var(--accent-bg-soft)' : 'var(--accent-bg-soft)',
+                            color: 'var(--accent-color)',
+                            border: '1px solid var(--accent-border-soft)'
+                          }}
+                        >
+                          {skill}
+                        </Badge>
+                      ))}
+                      {job.skills.length > 4 && (
+                        <Badge
+                          className="px-2 py-1 text-xs"
+                          style={{
+                            backgroundColor: 'var(--asu-ink)',
+                            color: 'var(--asu-text-muted)',
+                            border: '1px solid var(--asu-border)'
+                          }}
+                        >
+                          +{job.skills.length - 4}
+                        </Badge>
+                      )}
+                    </div>
+
+                    {/* Arrow */}
+                    <ChevronRight
+                      className="w-6 h-6 transition-colors flex-shrink-0"
+                      style={{
+                        color: 'var(--asu-text-muted)'
+                      }}
+                    />
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Content */}
-          <div className="flex-1">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="p-8 rounded-md border"
-                style={{ background: 'var(--asu-ink)', borderColor: 'var(--asu-border)' }}
-              >
-                <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
-                  <h3 className="text-2xl font-bold" style={{ color: 'var(--asu-text)' }}>{activeJob.role}</h3>
-                  <p className="font-semibold mt-1 sm:mt-0" style={{ color: 'var(--accent-color)' }}>{activeJob.duration}</p>
+      {/* Detailed Modal */}
+      <Dialog open={!!selectedExperience} onOpenChange={() => setSelectedExperience(null)}>
+        {selectedExperience && (
+          <>
+            <DialogClose onClose={() => setSelectedExperience(null)} />
+            <DialogHeader>
+              <div className="flex items-start gap-4">
+                <div
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg"
+                  style={{
+                    background: 'linear-gradient(135deg, var(--asu-maroon) 0%, var(--asu-maroon-600) 100%)'
+                  }}
+                >
+                  <Briefcase className="w-8 h-8 text-white" />
                 </div>
-                <p className="text-lg mb-6 font-semibold" style={{ color: 'var(--accent-color)' }}>{activeJob.company}</p>
+                <div className="flex-1">
+                  <DialogTitle className="text-2xl mb-1">
+                    {selectedExperience.role}
+                  </DialogTitle>
+                  <p className="text-xl font-semibold" style={{ color: 'var(--asu-text)' }}>
+                    {selectedExperience.company}
+                  </p>
+                  <div className="flex flex-wrap gap-3 mt-3 text-sm" style={{ color: 'var(--asu-text-muted)' }}>
+                    <div className="flex items-center gap-1.5">
+                      <MapPin className="w-4 h-4" />
+                      <span>{selectedExperience.location}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-4 h-4" />
+                      <span>{selectedExperience.duration}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </DialogHeader>
 
-                <ul className="space-y-3" style={{ color: 'var(--asu-text-muted)' }}>
-                  {activeJob.description.map((desc, i) => (
-                    <li key={i} className="flex items-start">
-                      <ChevronsRight className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style={{ color: 'var(--accent-color)' }} />
-                      <span>{desc}</span>
+            <DialogContent className="space-y-6">
+              {/* Responsibilities */}
+              <div>
+                <h4 className="text-lg font-bold mb-3" style={{ color: 'var(--heading-accent)' }}>
+                  Responsibilities & Contributions
+                </h4>
+                <ul className="space-y-2">
+                  {selectedExperience.description.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2" style={{ color: 'var(--asu-text-muted)' }}>
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--accent-color)' }} />
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-      </div>
-    </section>
+              </div>
+
+              {/* Key Achievements */}
+              <div>
+                <h4 className="text-lg font-bold mb-3 flex items-center gap-2" style={{ color: 'var(--heading-accent)' }}>
+                  <Award className="w-5 h-5" />
+                  Key Achievements
+                </h4>
+                <div className="space-y-3">
+                  {selectedExperience.description.map((item, i) => {
+                    // Extract achievements that mention percentages or measurable impact
+                    if (item.match(/\d+%/) || item.toLowerCase().includes('reduce') || item.toLowerCase().includes('improve') || item.toLowerCase().includes('support')) {
+                      return (
+                        <div
+                          key={i}
+                          className="p-3 rounded-lg flex items-start gap-3"
+                          style={{
+                            background: 'var(--accent-bg-soft)',
+                            border: '1px solid var(--accent-border-soft)'
+                          }}
+                        >
+                          <span className="text-xl">🎯</span>
+                          <span style={{ color: 'var(--asu-text)' }}>{item}</span>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
+              </div>
+
+              {/* Technologies */}
+              <div>
+                <h4 className="text-lg font-bold mb-3" style={{ color: 'var(--heading-accent)' }}>
+                  Technologies & Tools
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedExperience.skills.map((skill, skillIndex) => (
+                    <Badge
+                      key={skillIndex}
+                      className="px-3 py-1 text-sm"
+                      style={{
+                        backgroundColor: 'var(--accent-color)',
+                        color: 'white'
+                      }}
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            </DialogContent>
+          </>
+        )}
+      </Dialog>
+    </>
   );
 }

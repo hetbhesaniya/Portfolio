@@ -160,7 +160,7 @@ export default function Navigation() {
                             whileTap={{ scale: 0.95 }}
                             onClick={toggleTheme}
                             aria-label="Toggle theme"
-                            className="p-3 rounded-md border hidden md:block"
+                            className="p-3 rounded-md border"
                             style={{
                                 borderColor: theme === 'asu-dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.06)',
                                 color: theme === 'asu-dark' ? 'var(--asu-gold)' : 'var(--asu-maroon)',
@@ -201,23 +201,6 @@ export default function Navigation() {
                                 {item.name}
                             </motion.button>
                         ))}
-                        <div className="pt-2">
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                onClick={toggleTheme}
-                                aria-label="Toggle theme"
-                                className="flex items-center gap-2 p-2 rounded-md border w-full"
-                                style={{
-                                    borderColor: theme === 'asu-dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.06)',
-                                    color: theme === 'asu-dark' ? 'var(--asu-gold)' : 'var(--asu-maroon)',
-                                    background: 'transparent'
-                                }}
-                            >
-                                <PitchforkIcon size={24} />
-                                <span>Switch theme</span>
-                            </motion.button>
-                        </div>
                     </motion.div>
                 )}
             </div>

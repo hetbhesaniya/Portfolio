@@ -83,28 +83,45 @@ export default function Hero() {
                 </div>
 
                 <motion.div
-                    className="md:order-1 md:text-center"
+                    className="md:order-1 md:text-center text-center"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
                 >
-                    {/* Mobile Profile Image */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="md:hidden mx-auto mb-8 rounded-full shadow-xl border overflow-hidden w-56 sm:w-64 aspect-square"
-                        style={{ borderColor: 'rgba(0,0,0,0.08)' }}
-                    >
-                        <Image
-                            src="/profile.jpg"
-                            alt="Het Bhesaniya"
-                            width={256}
-                            height={256}
-                            className="w-full h-full object-cover"
-                            priority
-                        />
-                    </motion.div>
+                    {/* Mobile Profile Image and ASU Grad Logo Container */}
+                    <div className="md:hidden flex flex-col items-center mb-8">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="rounded-full shadow-xl border overflow-hidden w-56 sm:w-64 aspect-square mb-4"
+                            style={{ borderColor: 'rgba(0,0,0,0.08)' }}
+                        >
+                            <Image
+                                src="/profile.jpg"
+                                alt="Het Bhesaniya"
+                                width={256}
+                                height={256}
+                                className="w-full h-full object-cover"
+                                priority
+                            />
+                        </motion.div>
+                        {/* ASU Grad 2025 Logo - Mobile - Theme Aware */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.6 }}
+                            className="flex justify-center"
+                        >
+                            <Image
+                                src={theme === 'asu-dark' ? '/asu-grad-2025-dark.png' : '/asu-grad-2025.png'}
+                                alt="ASU Grad 2025"
+                                width={240}
+                                height={72}
+                                className="h-auto"
+                            />
+                        </motion.div>
+                    </div>
                     <motion.div
                         className="mb-6"
                         initial={{ opacity: 0, scale: 0.8 }}
