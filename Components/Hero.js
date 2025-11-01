@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { useTheme } from "@/Components/ThemeProvider";
 
 export default function Hero() {
@@ -200,29 +200,12 @@ export default function Hero() {
                         whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(255, 198, 39, 0.35)" }}
                         whileTap={{ scale: 0.95 }}
                         onClick={scrollToNext}
-                        className="px-8 py-3 rounded-md font-semibold transition-all duration-300 hero-btn"
+                        className="px-8 py-3 rounded-md font-semibold transition-all duration-300 hero-btn mb-8"
                     >
                         Explore My Skills
                     </motion.button>
                 </motion.div>
                 </div>
-
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 2 }}
-                    className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-                >
-                    <motion.button
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        onClick={scrollToNext}
-                        className="transition-colors duration-300"
-                        style={{ color: 'var(--asu-gold)' }}
-                    >
-                        <ChevronDown size={32} />
-                    </motion.button>
-                </motion.div>
             </div>
         </section>
     );
