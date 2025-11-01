@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Briefcase, MapPin, Calendar, ChevronRight, Award } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/Components/ui/dialog";
 import { Badge } from "@/Components/ui/badge";
@@ -11,7 +12,11 @@ export default function Experience() {
   useEffect(() => {
     fetch("/Data/Experience.json")
       .then(res => res.json())
-      .then(data => setJobs(data));
+      .then(data => setJobs(data))
+      .catch(err => {
+        console.error("Error loading experience data:", err);
+        setJobs([]);
+      });
   }, []);
 
   if (!jobs.length) {
@@ -63,14 +68,25 @@ export default function Experience() {
                   <div className="p-5 flex items-center gap-6">
                     {/* Icon */}
                     <div
-                      className="w-14 h-14 rounded-xl flex items-center justify-center shadow-md flex-shrink-0"
-                      style={{
-                        background: index % 2 === 0
-                          ? 'linear-gradient(135deg, var(--asu-maroon) 0%, var(--asu-maroon-600) 100%)'
-                          : 'linear-gradient(135deg, var(--asu-gold) 0%, var(--asu-gold-600) 100%)'
-                      }}
+                      className="w-14 h-14 flex items-center justify-center flex-shrink-0"
                     >
-                      <Briefcase className="w-7 h-7 text-white" />
+                      {job.logo ? (
+                        <Image
+                          src={job.logo}
+                          alt={`${job.company} logo`}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-contain rounded-full"
+                        />
+                      ) : (
+                        <div className="rounded-xl flex items-center justify-center shadow-md overflow-hidden" style={{
+                          background: index % 2 === 0
+                            ? 'linear-gradient(135deg, var(--asu-maroon) 0%, var(--asu-maroon-600) 100%)'
+                            : 'linear-gradient(135deg, var(--asu-gold) 0%, var(--asu-gold-600) 100%)'
+                        }}>
+                          <Briefcase className="w-7 h-7 text-white" />
+                        </div>
+                      )}
                     </div>
 
                     {/* Content */}
@@ -144,14 +160,26 @@ export default function Experience() {
             <DialogClose onClose={() => setSelectedExperience(null)} />
             <DialogHeader>
               <div className="flex items-start gap-4">
-                <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg"
-                  style={{
-                    background: 'linear-gradient(135deg, var(--asu-maroon) 0%, var(--asu-maroon-600) 100%)'
-                  }}
-                >
-                  <Briefcase className="w-8 h-8 text-white" />
-                </div>
+                {selectedExperience.logo ? (
+                  <div className="w-16 h-16 flex items-center justify-center">
+                    <Image
+                      src={selectedExperience.logo}
+                      alt={`${selectedExperience.company} logo`}
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-contain rounded-full"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(135deg, var(--asu-maroon) 0%, var(--asu-maroon-600) 100%)'
+                    }}
+                  >
+                    <Briefcase className="w-8 h-8 text-white" />
+                  </div>
+                )}
                 <div className="flex-1">
                   <DialogTitle className="text-2xl mb-1">
                     {selectedExperience.role}

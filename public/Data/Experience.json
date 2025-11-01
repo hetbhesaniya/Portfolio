@@ -1,24 +1,11 @@
 [
   {
     "id": 1,
-    "company": "GlassiaAI",
-    "role": "Software Developer",
-    "location": "Remote",
-    "duration": "Jun 2024 – Present",
-    "description": [
-      "Engineered multilingual RESTful APIs supporting 10+ languages, reducing latency by 30%.",
-      "Developed scalable backend services with Node.js, Flask, and Spring Boot.",
-      "Deployed containerized applications with Docker on AWS EC2.",
-      "Set up CI/CD pipelines using GitHub Actions for faster and reliable releases."
-    ],
-    "skills": ["Node.js", "Flask", "Spring Boot", "Docker", "AWS", "CI/CD"]
-  },
-  {
-    "id": 2,
     "company": "Arizona State University — Enterprise Brand Strategy & Management",
     "role": "Data & Editorial Operations Analyst",
     "location": "Tempe, AZ",
     "duration": "Jan 2025 – Present",
+    "logo": "/logos/asu.png",
     "description": [
       "Automated editorial workflows, improving turnaround time by 40%.",
       "Designed Python validation scripts, reducing publication errors by 90%.",
@@ -28,11 +15,27 @@
     "skills": ["Python", "Data Analysis", "Automation", "Dashboards", "ETL"]
   },
   {
+    "id": 2,
+    "company": "GlassiaAI",
+    "role": "Software Developer",
+    "location": "Remote",
+    "duration": "Jun 2024 – Dec 2024",
+    "logo": "/logos/glassia.png",
+    "description": [
+      "Engineered multilingual RESTful APIs supporting 10+ languages, reducing latency by 30%.",
+      "Developed scalable backend services with Node.js, Flask, and Spring Boot.",
+      "Deployed containerized applications with Docker on AWS EC2.",
+      "Set up CI/CD pipelines using GitHub Actions for faster and reliable releases."
+    ],
+    "skills": ["Node.js", "Flask", "Spring Boot", "Docker", "AWS", "CI/CD"]
+  },
+  {
     "id": 3,
     "company": "NR Crew Pvt. Ltd.",
     "role": "Software Developer Intern",
     "location": "Remote",
     "duration": "Jan 2024 - Jun 2024",
+    "logo": "/logos/nrcrew.png",
     "description": [
       "Built e-commerce platform backend with REST APIs and MySQL.",
       "Optimized frontend performance, reducing page load time by 35%.",
@@ -46,6 +49,7 @@
     "role": "Data Science Intern",
     "location": "Remote",
     "duration": "Jul 2023 - Aug 2023",
+    "logo": "/logos/techmicra.png",
     "description": [
       "Designed and deployed regression models for client reporting.",
       "Built analytics dashboards and interactive visualizations in Python.",
