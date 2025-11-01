@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -27,12 +26,6 @@ export default function Footer() {
                     <p className="text-sm" style={{ color: 'var(--asu-text-muted)' }}>
                         © {new Date().getFullYear()} Het Bhesaniya. All rights reserved.
                     </p>
-                    
-                    <div className="mt-8 pt-8" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-                        <p className="text-xs font-mono" style={{ color: 'var(--asu-text-muted)' }}>
-                            "Building reliable systems with speed and clarity."
-                        </p>
-                    </div>
                 </div>
             </div>
         </footer>

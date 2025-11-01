@@ -36,7 +36,9 @@ html, body, #__next {
   /* Underline accent for section dividers */
   --underline-accent: var(--asu-gold);
   /* Brand hover underline */
-  --brand-underline: var(--asu-gold);
+  --brand-underline: var(--asu-maroon);
+  /* Profile image border */
+  --profile-border-color: var(--asu-maroon);
 }
 
 /* Theme tokens: ASU Light */
@@ -61,7 +63,8 @@ html, body, #__next {
   --accent-bg-soft: rgba(140, 29, 64, 0.12);
   --accent-border-soft: rgba(140, 29, 64, 0.25);
   --underline-accent: var(--asu-gold);
-  --brand-underline: var(--asu-gold);
+  --brand-underline: var(--asu-maroon);
+  --profile-border-color: var(--asu-maroon);
 }
 
 /* Theme tokens: ASU Dark */
@@ -98,7 +101,8 @@ html, body, #__next {
   --accent-bg-soft: rgba(255, 198, 39, 0.12);
   --accent-border-soft: rgba(255, 198, 39, 0.35);
   --underline-accent: var(--asu-maroon);
-  --brand-underline: var(--asu-maroon);
+  --brand-underline: var(--asu-gold);
+  --profile-border-color: var(--asu-gold);
 }
 
 body {
@@ -163,6 +167,7 @@ body {
 /* Navigation underline - theme aware */
 .asu-underline-gold {
   position: relative;
+  display: inline-block;
 }
 
 .asu-underline-gold::after {
@@ -182,7 +187,9 @@ body {
 }
 
 .asu-underline-gold:hover::after,
-.asu-underline-gold[aria-current="page"]::after {
+.asu-underline-gold.active::after,
+.asu-underline-gold[aria-current="page"]::after,
+button[aria-current="page"] .asu-underline-gold::after {
   width: 100%;
 }
 
@@ -232,4 +239,18 @@ body {
 .hero-btn:hover {
   filter: brightness(1.05);
   box-shadow: var(--asu-glow);
+}
+
+/* Experience card hover shadow - theme aware */
+.experience-card-hover {
+  transition: all 0.3s ease;
+}
+
+.experience-card-hover:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="asu-dark"] .experience-card-hover:hover {
+  box-shadow: 0 10px 30px rgba(255, 198, 39, 0.25), 0 0 20px rgba(255, 198, 39, 0.15);
+  transform: translateY(-2px);
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -46,10 +46,29 @@ export default function Navigation() {
     const scrollToSection = (href) => {
         const element = document.querySelector(href);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            setIsMobileMenuOpen(false);
+            const navHeight = 80; // Approximate height of fixed navigation bar
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - navHeight;
+
             const id = href.replace('#', '');
             setActiveSection(id);
+            setIsMobileMenuOpen(false);
+
+            // Prevent scroll detection from overriding for longer
+            window.__navigationScrolling = true;
+            setTimeout(() => {
+                window.__navigationScrolling = false;
+            }, 1500);
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+
+            // Ensure active section stays correct after scroll completes
+            setTimeout(() => {
+                setActiveSection(id);
+            }, 800); // Wait for smooth scroll to complete
         }
     };
 
@@ -61,16 +80,22 @@ export default function Navigation() {
 
         if (!sections.length) return;
 
+        let isScrolling = false;
+        let scrollTimeout;
+
         const handleScroll = () => {
+            // Don't update active section if user just clicked a nav item (smooth scroll in progress)
+            if (isScrolling || window.__navigationScrolling) return;
+
             // Find the section closest to the top of viewport
             let currentSection = 'home';
             let minDistance = Infinity;
 
             sections.forEach((section) => {
                 const rect = section.getBoundingClientRect();
-                // Check if section is in viewport
-                if (rect.top <= 100 && rect.bottom >= 0) {
-                    const distance = Math.abs(rect.top);
+                // Check if section is in viewport with better threshold
+                if (rect.top <= 120 && rect.bottom >= 50) {
+                    const distance = Math.abs(rect.top - 80); // Account for nav height
                     if (distance < minDistance) {
                         minDistance = distance;
                         currentSection = section.id;
@@ -78,23 +103,43 @@ export default function Navigation() {
                 }
             });
 
+            // Only update if we're at the top (home section)
+            if (window.scrollY < 100) {
+                currentSection = 'home';
+            }
+
             setActiveSection(currentSection);
         };
 
-        // Initial check
-        handleScroll();
+        // Track when smooth scroll starts
+        const handleSmoothScroll = () => {
+            isScrolling = true;
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isScrolling = false;
+            }, 1000); // Wait for smooth scroll to complete
+        };
 
-        // Add scroll listener
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        
-        // Also use IntersectionObserver for more accurate detection
+        // Initial check with delay to ensure DOM is ready
+        setTimeout(() => {
+            if (window.scrollY < 100) {
+                setActiveSection('home');
+            } else {
+                handleScroll();
+            }
+        }, 100);
+
+        // Use IntersectionObserver for more accurate detection
         const observer = new IntersectionObserver(
             (entries) => {
+                // Don't update during programmatic scroll or manual navigation clicks
+                if (isScrolling || window.__navigationScrolling) return;
+
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         const rect = entry.boundingClientRect;
                         // Only update if section is in the upper portion of viewport
-                        if (rect.top <= 150) {
+                        if (rect.top <= 120 && rect.top >= -50) {
                             setActiveSection(entry.target.id);
                         }
                     }
@@ -108,9 +153,24 @@ export default function Navigation() {
         );
 
         sections.forEach((section) => observer.observe(section));
+
+        // Add scroll listener with throttling
+        let scrollTimer;
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(handleScroll, 150);
+            }
+        }, { passive: true });
+
+        // Listen for smooth scroll events
+        window.addEventListener('scroll', handleSmoothScroll, { passive: true });
         
         return () => {
+            clearTimeout(scrollTimer);
+            clearTimeout(scrollTimeout);
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleSmoothScroll);
             observer.disconnect();
         };
     }, []);
@@ -194,11 +254,13 @@ export default function Navigation() {
                                 key={item.name}
                                 whileHover={{ x: 10 }}
                                 onClick={() => scrollToSection(item.href)}
-                                className="block w-full text-left py-2 transition-colors duration-300 asu-underline-gold"
+                                className="block w-full text-left py-2 transition-colors duration-300"
                                 style={{ color: 'var(--asu-text)' }}
                                 aria-current={activeSection === item.id ? 'page' : undefined}
                             >
-                                {item.name}
+                                <span className={`asu-underline-gold inline-block ${activeSection === item.id ? 'active' : ''}`}>
+                                    {item.name}
+                                </span>
                             </motion.button>
                         ))}
                     </motion.div>

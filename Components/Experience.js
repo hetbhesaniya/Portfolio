@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Briefcase, MapPin, Calendar, ChevronRight, Award } from "lucide-react";
@@ -58,7 +58,7 @@ export default function Experience() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <div
-                  className="hover:shadow-xl transition-all duration-300 cursor-pointer group rounded-lg border overflow-hidden"
+                  className="experience-card-hover cursor-pointer group rounded-lg border overflow-hidden"
                   onClick={() => setSelectedExperience(job)}
                   style={{
                     background: 'var(--asu-ink)',

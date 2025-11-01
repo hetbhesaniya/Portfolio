@@ -1,31 +1,73 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Github, Linkedin, Instagram, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Instagram, Send, CheckCircle, XCircle } from "lucide-react";
 import { Button } from "@/Components/ui/button";
 import { Input } from "@/Components/ui/input";
 import { Textarea } from "@/Components/ui/textarea";
+import { useTheme } from "@/Components/ThemeProvider";
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
+    const { theme } = useTheme();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         message: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setSubmitStatus(null);
         
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        
-        // Reset form
-        setFormData({ name: '', email: '', message: '' });
-        setIsSubmitting(false);
-        
-        // You can integrate with a real form service here
-        alert('Message sent successfully!');
+        try {
+            // EmailJS configuration
+            const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+            const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+            const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+            console.log('EmailJS Config:', { serviceId, templateId, publicKey: publicKey ? 'Set' : 'Missing' });
+
+            if (!serviceId || !templateId || !publicKey) {
+                throw new Error('EmailJS configuration is missing. Please check your environment variables.');
+            }
+
+            // Send email using EmailJS (no need to init separately in newer versions)
+            const result = await emailjs.send(
+                serviceId,
+                templateId,
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    message: formData.message,
+                    to_name: 'Het Bhesaniya',
+                },
+                publicKey // Pass public key as 4th parameter
+            );
+
+            console.log('EmailJS Success:', result);
+
+            // Success
+            setSubmitStatus('success');
+            setFormData({ name: '', email: '', message: '' });
+            
+            // Reset status message after 5 seconds
+            setTimeout(() => {
+                setSubmitStatus(null);
+            }, 5000);
+        } catch (error) {
+            console.error('EmailJS Error:', error);
+            setSubmitStatus('error');
+            
+            // Reset status message after 5 seconds
+            setTimeout(() => {
+                setSubmitStatus(null);
+            }, 5000);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleInputChange = (field, value) => {
@@ -96,8 +138,8 @@ export default function Contact() {
                                         transition={{ duration: 0.6, delay: 0.1 * index }}
                                         className="flex items-center space-x-4"
                                     >
-                                        <div className="p-3 rounded-md" style={{ background: 'rgba(255,198,39,0.12)' }}>
-                                            <info.icon className="w-5 h-5" style={{ color: 'var(--asu-maroon)' }} />
+                                        <div className="p-3 rounded-md" style={{ background: theme === 'asu-dark' ? 'rgba(255,198,39,0.12)' : 'rgba(140,29,64,0.12)' }}>
+                                            <info.icon className="w-5 h-5" style={{ color: theme === 'asu-dark' ? 'var(--asu-gold)' : 'var(--asu-maroon)' }} />
                                         </div>
                                         <div>
                                             <p className="text-sm" style={{ color: 'var(--asu-text-muted)' }}>{info.label}</p>
@@ -186,6 +228,38 @@ export default function Contact() {
                                 />
                             </div>
                             
+                            {submitStatus === 'success' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="p-4 rounded-md flex items-center space-x-3"
+                                    style={{ 
+                                        background: 'rgba(76, 175, 80, 0.1)', 
+                                        border: '1px solid rgba(76, 175, 80, 0.3)',
+                                        color: '#4caf50'
+                                    }}
+                                >
+                                    <CheckCircle size={20} />
+                                    <span className="font-medium">Message sent successfully! I'll get back to you soon.</span>
+                                </motion.div>
+                            )}
+                            
+                            {submitStatus === 'error' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="p-4 rounded-md flex items-center space-x-3"
+                                    style={{ 
+                                        background: 'rgba(244, 67, 54, 0.1)', 
+                                        border: '1px solid rgba(244, 67, 54, 0.3)',
+                                        color: '#f44336'
+                                    }}
+                                >
+                                    <XCircle size={20} />
+                                    <span className="font-medium">Failed to send message. Please try again or email me directly.</span>
+                                </motion.div>
+                            )}
+
                             <Button
                                 type="submit"
                                 disabled={isSubmitting}

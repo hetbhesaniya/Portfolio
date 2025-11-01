@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
@@ -31,7 +31,17 @@ export default function Hero() {
     }, []);
 
     const scrollToNext = () => {
-        document.querySelector("#about").scrollIntoView({ behavior: 'smooth' });
+        const element = document.querySelector("#about");
+        if (element) {
+            const navHeight = 80; // Approximate height of fixed navigation bar
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - navHeight;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
     };
 
     return (
@@ -53,11 +63,11 @@ export default function Hero() {
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="rounded-full shadow-xl border overflow-hidden mb-4"
-                        style={{ borderColor: 'rgba(0,0,0,0.08)' }}
+                        className="rounded-full shadow-xl border-4 overflow-hidden mb-4"
+                        style={{ borderColor: 'var(--profile-border-color)' }}
                     >
                         <Image
-                            src="/profile.jpg"
+                            src="/Profile.jpg"
                             alt="Het Bhesaniya"
                             width={480}
                             height={480}
@@ -75,8 +85,8 @@ export default function Hero() {
                         <Image
                             src={theme === 'asu-dark' ? '/asu-grad-2025-dark.png' : '/asu-grad-2025.png'}
                             alt="ASU Grad 2025"
-                            width={280}
-                            height={84}
+                            width={220}
+                            height={66}
                             className="h-auto"
                         />
                     </motion.div>
@@ -94,11 +104,11 @@ export default function Hero() {
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="rounded-full shadow-xl border overflow-hidden w-56 sm:w-64 aspect-square mb-4"
-                            style={{ borderColor: 'rgba(0,0,0,0.08)' }}
+                            className="rounded-full shadow-xl border-4 overflow-hidden w-56 sm:w-64 aspect-square mb-4"
+                            style={{ borderColor: 'var(--profile-border-color)' }}
                         >
                             <Image
-                                src="/profile.jpg"
+                                src="/Profile.jpg"
                                 alt="Het Bhesaniya"
                                 width={256}
                                 height={256}
@@ -116,8 +126,8 @@ export default function Hero() {
                             <Image
                                 src={theme === 'asu-dark' ? '/asu-grad-2025-dark.png' : '/asu-grad-2025.png'}
                                 alt="ASU Grad 2025"
-                                width={240}
-                                height={72}
+                                width={200}
+                                height={60}
                                 className="h-auto"
                             />
                         </motion.div>
@@ -193,11 +203,9 @@ export default function Hero() {
                         className="px-8 py-3 rounded-md font-semibold transition-all duration-300 hero-btn"
                     >
                         Explore My Skills
-                    
                     </motion.button>
                 </motion.div>
                 </div>
-
 
                 <motion.div
                     initial={{ opacity: 0 }}

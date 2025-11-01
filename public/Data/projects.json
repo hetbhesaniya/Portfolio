@@ -4,7 +4,7 @@
     "title": "FaceFixer — AI Skincare Assistant",
     "description": "Built an AI-powered skincare assistant using YOLOv11 for face detection, integrated with a Spring Boot API, and deployed image storage on AWS S3.",
     "technologies": ["YOLOv11", "Spring Boot", "Python", "AWS S3"],
-    "image_url": "/projects/skin.png",
+    "image_url": "/Projects/Skin.png",
     "demo_url": "https://your-demo-link.com",
     "github_url": "https://github.com/hetbhesaniya/facefixer"
   },
@@ -13,7 +13,7 @@
     "title": "Swiftiply — AI Reply Extension",
     "description": "Developed a privacy-first browser extension for Chrome/Firefox that generates context-aware replies using GPT API, built with TypeScript and React.",
     "technologies": ["TypeScript", "React", "GPT API", "Chrome Extension"],
-    "image_url": "/projects/swiftiply.png",
+    "image_url": "/Projects/Swiftiply.png",
     "demo_url": "https://your-demo-link.com",
     "github_url": "https://github.com/hetbhesaniya/swiftiply"
   },
@@ -22,7 +22,7 @@
     "title": "Urban Heat Island Analysis",
     "description": "Analyzed city-scale climate data to identify urban heat islands, using regression modeling, Pandas, and spatial data visualization dashboards.",
     "technologies": ["Python", "Pandas", "Regression", "Tableau"],
-    "image_url": "/projects/Urban Heat Analysis.jpeg",
+    "image_url": "/Projects/Urban Heat Analysis.jpeg",
     "demo_url": "https://your-demo-link.com",
     "github_url": "https://github.com/hetbhesaniya/urban-heat-analysis"
   }
