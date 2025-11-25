@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
@@ -7,18 +7,7 @@ import { ArrowLeft } from "lucide-react";
 import { throttle } from "@/utils/scroll";
 import AlternatingPolaroidSection from "@/components/polaroids/AlternatingPolaroidSection";
 import CraftCareLetterbox from "@/components/sections/CraftCareLetterbox";
-import FutureWhite from "@/components/about/FutureWhite";
-import OutroWhite from "@/components/about/OutroWhite";
-
-function TypewriterText({ lines, className = "", style = {} }) {
-    const content = useMemo(() => lines.join("\n\n"), [lines]);
-
-    return (
-        <div className={className} style={{ ...style, whiteSpace: "pre-wrap" }}>
-            {content}
-        </div>
-    );
-}
+import NewPage from "@/components/about/NewPage";
 
 export default function AboutMe() {
     const router = useRouter();
@@ -474,12 +463,8 @@ export default function AboutMe() {
             {/* SCENE 4 — Principles (The Way I Build) */}
             <CraftCareLetterbox />
 
-            {/* Future & Outro - Cut to white */}
-            <FutureWhite />
-            <OutroWhite
-                onBack={() => router.push('/')}
-                onContact={() => window.location.href = 'mailto:hetbhesaniya0096@gmail.com'}
-            />
+            {/* New Page Section */}
+            <NewPage />
     </div>
 );
 }
