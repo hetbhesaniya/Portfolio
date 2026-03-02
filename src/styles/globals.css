@@ -1,0 +1,285 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #__next {
+  height: 100%;
+}
+
+:root {
+  /* ASU theme tokens */
+  --asu-maroon: #8C1D40;          /* ASU Maroon */
+  --asu-maroon-600: #741936;      /* darker shade */
+  --asu-maroon-400: #A53053;      /* lighter shade */
+  --asu-gold: #FFC627;            /* ASU Gold */
+  --asu-gold-600: #E0AE20;        /* darker shade */
+  --asu-gold-400: #FFD55E;        /* lighter shade */
+  --asu-sand: #F4E4B6;            /* soft neutral complement */
+  --asu-ink: #121212;             /* deep neutral background */
+  --asu-text: #F5F5F5;            /* light text */
+  --asu-text-muted: #CFCFCF;      /* muted text */
+
+  /* Shadows/accents */
+  --asu-glow: 0 0 24px rgba(255, 198, 39, 0.35);
+  --asu-border: rgba(0,0,0,0.08);
+  /* Hero theme tokens (overridden per theme) */
+  --hero-accent: var(--asu-maroon);
+  --hero-hover: var(--asu-maroon);
+  --hero-button-bg: var(--asu-maroon);
+  --hero-button-text: #ffffff;
+  /* Heading accent default */
+  --heading-accent: var(--asu-maroon);
+  /* Generic accent default (used by icons, chips) */
+  --accent-color: var(--asu-maroon);
+  --accent-bg-soft: rgba(140, 29, 64, 0.12);
+  --accent-border-soft: rgba(140, 29, 64, 0.25);
+  /* Underline accent for section dividers */
+  --underline-accent: var(--asu-gold);
+  /* Brand hover underline */
+  --brand-underline: var(--asu-maroon);
+  /* Profile image border */
+  --profile-border-color: var(--asu-maroon);
+}
+
+/* Theme tokens: ASU Light */
+[data-theme="asu-light"] {
+  --asu-maroon: #8C1D40;
+  --asu-maroon-600: #741936;
+  --asu-maroon-400: #A53053;
+  --asu-gold: #FFC627;
+  --asu-gold-600: #E0AE20;
+  --asu-gold-400: #FFD55E;
+  --asu-sand: #F8F5EA;
+  --asu-ink: #ffffff;
+  --asu-text: #111111;
+  --asu-text-muted: #555555;
+  --asu-border: rgba(0,0,0,0.08);
+  --hero-accent: var(--asu-maroon);
+  --hero-hover: var(--asu-maroon);
+  --hero-button-bg: var(--asu-maroon);
+  --hero-button-text: #ffffff;
+  --heading-accent: var(--asu-maroon);
+  --accent-color: var(--asu-maroon);
+  --accent-bg-soft: rgba(140, 29, 64, 0.12);
+  --accent-border-soft: rgba(140, 29, 64, 0.25);
+  --underline-accent: var(--asu-gold);
+  --brand-underline: var(--asu-maroon);
+  --profile-border-color: var(--asu-maroon);
+  --skill-badge-bg: rgba(255, 198, 39, 0.12);
+  --skill-badge-text: #8C1D40;
+}
+
+/* Theme tokens: ASU Dark */
+[data-theme="asu-dark"] {
+  /* Brand colors */
+  --asu-maroon: #8C1D40;             /* ASU Maroon */
+  --asu-maroon-600: #741936;
+  --asu-maroon-400: #A53053;
+  --asu-gold: #FFC627;               /* ASU Gold */
+  --asu-gold-600: #E0AE20;
+  --asu-gold-400: #FFD55E;
+
+  /* Accents available (use sparingly) */
+  --asu-green: #78BE20;
+  --asu-blue: #00A3E0;
+  --asu-orange: #FF7F32;
+  --asu-gray: #747474;
+  --asu-copper: #AF674B;
+  --asu-turquoise: #4AB7C4;
+  --asu-pink: #E74973;
+
+  /* App semantic tokens */
+  --asu-sand: #191919;               /* dark surface */
+  --asu-ink: #000000;                /* navbar/ink background */
+  --asu-text: #FFFFFF;
+  --asu-text-muted: #BFBFBF;
+  --asu-border: rgba(255,255,255,0.12);
+  --hero-accent: var(--asu-gold);
+  --hero-hover: var(--asu-gold);
+  --hero-button-bg: var(--asu-gold);
+  --hero-button-text: #2b2b2b;
+  --heading-accent: var(--asu-gold);
+  --accent-color: var(--asu-gold);
+  --accent-bg-soft: rgba(255, 198, 39, 0.12);
+  --accent-border-soft: rgba(255, 198, 39, 0.35);
+  --underline-accent: var(--asu-maroon);
+  --brand-underline: var(--asu-gold);
+  --profile-border-color: var(--asu-gold);
+  --skill-badge-bg: rgba(140, 29, 64, 0.12);
+  --skill-badge-text: #FFC627;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--asu-ink);
+  color: var(--asu-text);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Gritty noise background texture */
+.noise-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ASU helpers */
+.asu-gradient-bg {
+  background-image: radial-gradient(1200px 600px at 10% -10%, rgba(255, 198, 39, 0.12), transparent 60%),
+    radial-gradient(1000px 800px at 110% 10%, rgba(140, 29, 64, 0.18), transparent 60%),
+    linear-gradient(180deg, rgba(140, 29, 64, 0.35) 0%, rgba(18, 18, 18, 0.9) 100%);
+}
+
+.asu-text-glow {
+  text-shadow: 0 0 10px rgba(255, 198, 39, 0.35);
+}
+
+.asu-gold-glow {
+  box-shadow: var(--asu-glow);
+}
+
+.asu-border-gold {
+  border-color: var(--asu-gold);
+}
+
+.asu-btn-primary {
+  background: linear-gradient(90deg, var(--asu-gold) 0%, var(--asu-gold-600) 100%);
+  color: #2b2b2b;
+}
+
+.asu-btn-primary:hover {
+  background: linear-gradient(90deg, var(--asu-gold-400) 0%, var(--asu-gold) 100%);
+}
+
+/* Navigation underline - theme aware */
+.asu-underline-gold {
+  position: relative;
+  display: inline-block;
+}
+
+.asu-underline-gold::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 3px;
+  width: 0;
+  background: var(--asu-maroon);
+  transition: width 200ms ease;
+}
+
+/* Dark theme: gold underline */
+[data-theme="asu-dark"] .asu-underline-gold::after {
+  background: var(--asu-gold);
+}
+
+.asu-underline-gold:hover::after,
+.asu-underline-gold.active::after,
+.asu-underline-gold[aria-current="page"]::after,
+button[aria-current="page"] .asu-underline-gold::after {
+  width: 100%;
+}
+
+/* Light hero white/maroon combo */
+.asu-white-maroon-bg {
+  background:
+    radial-gradient(900px 500px at 110% -10%, rgba(140, 29, 64, 0.08), transparent 60%),
+    radial-gradient(700px 400px at -10% 10%, rgba(255, 198, 39, 0.10), transparent 60%),
+    var(--asu-ink);
+}
+
+/* Dark theme overrides for common Tailwind utilities used in components */
+[data-theme="asu-dark"] .bg-white { background-color: var(--asu-ink) !important; }
+[data-theme="asu-dark"] .text-black { color: var(--asu-text) !important; }
+[data-theme="asu-dark"] .border { border-color: rgba(255,255,255,0.12) !important; }
+
+/* Brand hover style for name: maroon text + gold underline on hover */
+.asu-brand {
+  position: relative;
+  color: var(--asu-text);
+  transition: color 200ms ease;
+}
+
+.asu-brand::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 3px;
+  width: 0;
+  background: var(--brand-underline);
+  transition: width 200ms ease;
+}
+
+.asu-brand:hover {
+  color: var(--hero-hover);
+  text-shadow: 0 0 10px rgba(255, 198, 39, 0.35);
+}
+
+.asu-brand:hover::after { width: 100%; }
+
+/* Hero button styles with theme variables */
+.hero-btn {
+  background: var(--hero-button-bg);
+  color: var(--hero-button-text);
+}
+.hero-btn:hover {
+  filter: brightness(1.05);
+  box-shadow: var(--asu-glow);
+}
+
+/* Experience card hover shadow - theme aware */
+.experience-card-hover {
+  transition: all 0.3s ease;
+}
+
+.experience-card-hover:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="asu-dark"] .experience-card-hover:hover {
+  box-shadow: 0 10px 30px rgba(255, 198, 39, 0.25), 0 0 20px rgba(255, 198, 39, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Theme switch button - prevent mobile context menu */
+#theme-switch-btn {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: auto;
+}
+
+/* Also prevent context menu on images inside the button */
+#theme-switch-btn img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}

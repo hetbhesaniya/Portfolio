@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Github, Linkedin, Mail } from "lucide-react";
@@ -9,48 +9,6 @@ import { Button } from "@/components/ui/button";
 export default function Hero() {
     const heroRef = useRef(null);
     const { theme } = useTheme();
-
-    const roles = [
-        "Software Engineer",
-        "Full Stack Engineer",
-        "Backend Engineer",
-        "Web Developer",
-    ];
-
-    const [displayText, setDisplayText] = useState("");
-    const [roleIndex, setRoleIndex] = useState(0);
-    const [isDeleting, setIsDeleting] = useState(false);
-
-    useEffect(() => {
-        const currentRole = roles[roleIndex % roles.length];
-
-        const typingSpeed = 90;
-        const deletingSpeed = 55;
-        const pauseAfterType = 1400;
-        const pauseAfterDelete = 400;
-
-        let timeout;
-
-        if (!isDeleting && displayText === currentRole) {
-            timeout = setTimeout(() => {
-                setIsDeleting(true);
-            }, pauseAfterType);
-        } else if (isDeleting && displayText === "") {
-            timeout = setTimeout(() => {
-                setIsDeleting(false);
-                setRoleIndex((prev) => (prev + 1) % roles.length);
-            }, pauseAfterDelete);
-        } else {
-            timeout = setTimeout(() => {
-                const nextText = isDeleting
-                    ? currentRole.slice(0, displayText.length - 1)
-                    : currentRole.slice(0, displayText.length + 1);
-                setDisplayText(nextText);
-            }, isDeleting ? deletingSpeed : typingSpeed);
-        }
-
-        return () => clearTimeout(timeout);
-    }, [displayText, isDeleting, roleIndex, roles]);
 
     useEffect(() => {
         const handleMouseMove = throttle((e) => {
@@ -219,15 +177,8 @@ export default function Hero() {
                         transition={{ duration: 1, delay: 0.8 }}
                         className="mb-8"
                     >
-                        <h2
-                            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-4 tracking-widest uppercase px-4 flex items-center justify-center gap-1"
-                            style={{ color: 'var(--hero-accent)' }}
-                        >
-                            <span className="sr-only">Roles I work as:</span>
-                            <span aria-hidden="true">{displayText}</span>
-                            <span className="typewriter-cursor" aria-hidden="true">
-                                |
-                            </span>
+                        <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-4 tracking-widest uppercase px-4" style={{ color: 'var(--hero-accent)' }}>
+                            Software Engineer & Data Analyst
                         </h2>
                         <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed px-4" style={{ color: 'var(--asu-text-muted)' }}>
                             Building reliable systems, scalable pipelines, and intelligent solutions
