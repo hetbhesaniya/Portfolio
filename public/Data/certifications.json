@@ -10,6 +10,24 @@
   },
   {
     "id": 2,
+    "name": "AWS Academy Graduate - Machine Learning for Natural Language Processing",
+    "issuer": "Amazon Web Services (AWS)",
+    "issue_date": "Dec 2025",
+    "credential_url": "https://www.credly.com/badges/be4a0753-54f8-43dd-aaa9-7367cc24bcb3",
+    "description": "Completed AWS Academy's machine learning for natural language processing curriculum covering AWS cloud best practices, building a solution using machine learning, introduction to natural language processing, and machine learning.",
+    "skills": ["AWS Cloud Best Practices", "Build A Solution Using Machine Learning", "Introduction To Natural Language Processing", "Machine Learning"]
+  },
+  {
+    "id": 3,
+    "name": "AWS Academy Graduate - Machine Learning Foundations",
+    "issuer": "Amazon Web Services (AWS)",
+    "issue_date": "Nov 2025",
+    "credential_url": "https://www.credly.com/earner/earned/badge/b2a9ffeb-618d-4936-9583-774949b59c31",
+    "description": "Completed AWS Academy's machine learning foundations curriculum covering artificial intelligence: machine learning, AWS, AWS cloud computing, machine learning, and machine learning (ML) foundations.",
+    "skills": ["Artificial Intelligence: Machine Learning", "AWS", "AWS Cloud Computing", "Machine Learning", "Machine Learning (ML) Foundations"]
+  },
+  {
+    "id": 4,
     "name": "Career Essentials in Data Analysis by Microsoft and LinkedIn",
     "issuer": "Microsoft",
     "issue_date": "Dec 2024",
@@ -18,7 +36,7 @@
     "skills": ["project documentation", "data visualization", "data governance", "business analytics", "regulatory reporting", "data analysis", "reporting"]
   },
   {
-    "id": 3,
+    "id": 5,
     "name": "Introduction to Career Skills in Data Analytics",
     "issuer": "LinkedIn",
     "issue_date": "Nov 2024",
@@ -27,7 +45,7 @@
     "skills": ["data interpretation", "analytics", "data science fundamentals", "Microsoft Excel", "SQL"]
   },
   {
-    "id": 4,
+    "id": 6,
     "name": "Learning Data Analytics: 1 Foundations",
     "issuer": "LinkedIn",
     "issue_date": "Nov 2024",
@@ -36,7 +54,7 @@
     "skills": ["data collection", "data cleaning", "data transformation", "data analysis", "reporting & analysis"]
   },
   {
-    "id": 5,
+    "id": 7,
     "name": "Power BI Data Visualization and Dashboard Tips, Tricks, & Techniques",
     "issuer": "LinkedIn",
     "issue_date": "Nov 2024",

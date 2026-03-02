@@ -10,6 +10,7 @@ export default function Certifications() {
   const { data: certifications, loading } = useDataFetch("/Data/certifications.json");
   const [showAll, setShowAll] = useState(false);
   const buttonRef = useRef(null);
+  const [expandedSkillIds, setExpandedSkillIds] = useState([]);
 
   if (loading || !certifications.length) {
     return (
@@ -50,7 +51,7 @@ export default function Certifications() {
           if (Math.abs(heightDifference) > 1) {
             window.scrollTo({
               top: window.scrollY + heightDifference,
-              behavior: 'instant'
+              behavior: 'auto'
             });
           }
         }
@@ -68,6 +69,7 @@ export default function Certifications() {
 
         <AnimatePresence initial={false} mode="wait">
           <motion.div
+            id="certifications-list"
             key={showAll ? "all" : "initial"}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -106,7 +108,11 @@ export default function Certifications() {
 
                   {cert.skills && cert.skills.length > 0 && (
                     <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-4">
-                      {cert.skills.slice(0, 3).map((skill, skillIndex) => (
+                      {(
+                        expandedSkillIds.includes(cert.id)
+                          ? cert.skills
+                          : cert.skills.slice(0, 3)
+                      ).map((skill, skillIndex) => (
                         <Badge
                           key={skillIndex}
                           className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs"
@@ -121,6 +127,13 @@ export default function Certifications() {
                       ))}
                       {cert.skills.length > 3 && (
                         <Badge
+                          onClick={() =>
+                            setExpandedSkillIds((prev) =>
+                              prev.includes(cert.id)
+                                ? prev.filter((id) => id !== cert.id)
+                                : [...prev, cert.id]
+                            )
+                          }
                           className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs"
                           style={{
                             backgroundColor: 'var(--asu-ink)',
@@ -128,7 +141,9 @@ export default function Certifications() {
                             border: '1px solid var(--asu-border)'
                           }}
                         >
-                          +{cert.skills.length - 3}
+                          {expandedSkillIds.includes(cert.id)
+                            ? "Show less"
+                            : `+${cert.skills.length - 3}`}
                         </Badge>
                       )}
                     </div>
@@ -168,9 +183,12 @@ export default function Certifications() {
         {remainingCerts.length > 0 && (
           <div ref={buttonRef} className="flex justify-center mt-8">
             <Button
+              type="button"
               onClick={handleToggle}
               variant={showAll ? "outline" : "secondary"}
               size="md"
+              aria-expanded={showAll}
+              aria-controls="certifications-list"
             >
               {showAll ? (
                 <>
