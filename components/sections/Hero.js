@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useRef as useReactRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Github, Linkedin, Mail } from "lucide-react";
@@ -6,42 +6,41 @@ import { useTheme } from "@/components/layout/ThemeProvider";
 import { throttle } from "@/utils/scroll";
 import { Button } from "@/components/ui/button";
 
+const ROLES = [
+    "Software Engineer",
+    "Full Stack Engineer",
+    "Backend Engineer",
+    "Web Developer",
+];
+
 export default function Hero() {
     const heroRef = useRef(null);
     const { theme } = useTheme();
 
-    const roles = [
-        "Software Engineer",
-        "Full Stack Engineer",
-        "Backend Engineer",
-        "Web Developer",
-    ];
-
     const [displayText, setDisplayText] = useState("");
     const [roleIndex, setRoleIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
+    const timeoutRef = useReactRef(null);
 
     useEffect(() => {
-        const currentRole = roles[roleIndex % roles.length];
+        const currentRole = ROLES[roleIndex % ROLES.length];
 
         const typingSpeed = 90;
         const deletingSpeed = 55;
         const pauseAfterType = 1400;
         const pauseAfterDelete = 400;
 
-        let timeout;
-
         if (!isDeleting && displayText === currentRole) {
-            timeout = setTimeout(() => {
+            timeoutRef.current = setTimeout(() => {
                 setIsDeleting(true);
             }, pauseAfterType);
         } else if (isDeleting && displayText === "") {
-            timeout = setTimeout(() => {
+            timeoutRef.current = setTimeout(() => {
                 setIsDeleting(false);
-                setRoleIndex((prev) => (prev + 1) % roles.length);
+                setRoleIndex((prev) => (prev + 1) % ROLES.length);
             }, pauseAfterDelete);
         } else {
-            timeout = setTimeout(() => {
+            timeoutRef.current = setTimeout(() => {
                 const nextText = isDeleting
                     ? currentRole.slice(0, displayText.length - 1)
                     : currentRole.slice(0, displayText.length + 1);
@@ -49,8 +48,12 @@ export default function Hero() {
             }, isDeleting ? deletingSpeed : typingSpeed);
         }
 
-        return () => clearTimeout(timeout);
-    }, [displayText, isDeleting, roleIndex, roles]);
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+        };
+    }, [displayText, isDeleting, roleIndex]);
 
     useEffect(() => {
         const handleMouseMove = throttle((e) => {

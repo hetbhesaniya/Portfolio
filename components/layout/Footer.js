@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import StoryModeHint from "@/components/StoryModeHint";
+import StoryModeHint from "@/components/common/StoryModeHint";
 
 export default function Footer() {
     const scrollToTop = () => {
