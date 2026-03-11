@@ -21,11 +21,13 @@ ASU Portfolio/
 │   │   ├── Lightbox.js
 │   │   └── PolaroidStack.js
 │   ├── layout/             # Layout and navigation components
+│   │   ├── AppLayout.js
 │   │   ├── Footer.js
 │   │   ├── Navigation.js
 │   │   └── ThemeProvider.js
 │   ├── common/             # Shared/reusable components
-│   │   └── SectionHeader.js
+│   │   ├── SectionHeader.js
+│   │   └── StoryModeHint.js
 │   └── ui/                 # UI component library (shadcn/ui)
 │       ├── badge.js
 │       ├── button.js
@@ -56,7 +58,6 @@ ASU Portfolio/
 │   └── globals.css
 ├── utils/                 # Utility functions
 │   └── scroll.js          # Scroll utilities (throttle)
-└── Layout.js              # Root layout component
 
 ```
 
