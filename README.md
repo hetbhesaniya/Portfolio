@@ -174,5 +174,6 @@ This project is private and proprietary.
 ## 👤 Author
 
 Het Bhesaniya - ASU Portfolio  
-Live portfolio: [https://hetbhesaniya.vercel.app](https://hetbhesaniya.vercel.app)
+Live portfolio: [project URL](https://hetbhesaniya.vercel.app)
+RoadMap.sh: [RoadMap URL](https://roadmap.sh/projects/portfolio-website)
 
