@@ -141,7 +141,7 @@ export default function Projects() {
                 <h4 className="text-lg font-bold mb-3" style={{ color: 'var(--heading-accent)' }}>
                   Overview
                 </h4>
-                <p style={{ color: 'var(--asu-text-muted)' }}>
+                <p className="whitespace-pre-line" style={{ color: 'var(--asu-text-muted)' }}>
                   {selectedProject.description}
                 </p>
               </div>

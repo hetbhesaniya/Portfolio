@@ -5,6 +5,7 @@
     "subtitle": "Live 2026",
     "description": "Built a full stack recovery intelligence platform for rotating shift workers using Next.js 14, TypeScript, Tailwind CSS, FastAPI, Supabase, and PostgreSQL, turning schedule, health, and wearable data into personalized recovery recommendations.\nBuilt backend workflows powered by Claude Haiku, RAG based clinical retrieval, and a custom circadian risk engine to produce context aware 24 hour recovery plans and detect high risk shift patterns.\nIntegrated Fitbit OAuth and deployed the platform across web and API infrastructure, supporting secure wearable data ingestion, real time plan generation, and a production style end to end demo within hackathon timelines.",
     "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "FastAPI", "Supabase", "PostgreSQL", "Fitbit OAuth", "RAG", "Claude Haiku"],
+    "image_url": "/Projects/Noxturn.png",
     "demo_url": "https://noxturn.vercel.app/"
   },
   {
@@ -34,4 +35,5 @@
     "demo_url": "https://your-demo-link.com",
     "github_url": "https://github.com/hetbhesaniya/urban-heat-analysis"
   }
+  
 ]
